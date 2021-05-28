@@ -16,6 +16,11 @@ struct PersistenceController {
         for _ in 0..<10 {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+			
+			let newWorkout = Workout(context: viewContext)
+			newWorkout.endDate = Date().addingTimeInterval(-60*23)
+			newWorkout.startDate = Date().addingTimeInterval(-60*46)
+			newWorkout.processed = false
         }
         do {
             try viewContext.save()

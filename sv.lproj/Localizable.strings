@@ -1,0 +1,48 @@
+/* 
+  Localizable.strings
+  Buddy
+
+  Created by Magnus Burton on 2021-05-18.
+  
+  Swedish
+*/
+
+/// Constants
+"Summary" = "Översikt";
+"Workouts" = "Träning";
+
+/// Sheet views
+"Done" = "Klar";
+"Save" = "Spara";
+"Skip" = "Hoppa över";
+
+/// Summary view
+"Hi %@!" = "Hej %@!";
+"Insights" = "Inblickar";
+"Heart Rate Variability" = "Hjärtvariabilitet";
+
+/// Name card view
+"NAME-CARD-TITLE" = "Vad heter du?";
+"NAME-CARD-DESCRIPTION" = "Eftersom din hälsa är en personlig sak kan jag lära mig vad du heter för en privatare appupplevelse.";
+"NAME-CARD-PLACEHOLDER" = "Vad ska jag kalla dig?";
+"NAME-CARD-PRIVACY" = "Detta är valfritt och informationen du anger lämnar inte din enhet.";
+
+/// Profile view
+"Profile" = "Profil";
+"%f years old" = "%f år";
+"No age available" = "Ålder ej tillgänglig";
+"Max HR" = "Maxpuls";
+"bpm" = "bpm";
+
+"Units" = "Enheter";
+"Distance" = "Avstånd";
+"Weight" = "Vikt";
+"Energy" = "Energi";
+"These settings won't impact your data in the Health app." = "Dessa inställningar kommer inte påverka din data i Hälsa-appen.";
+"Heart Rate Zones" = "Pulszoner";
+"Include walks" = "Inkludera gångpass";
+
+/// Workout view
+"Workouts" = "Träning";
+"No data found." = "Ingen data hittad.";
+"Make sure you've granted Buddy permission\nto read your recent workouts." = "Kolla så att du har gett Buddy tillgång till dina Träningspass i Hälsa-appen.";
