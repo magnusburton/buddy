@@ -3,19 +3,166 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA073ED225F37A11000BB823 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA073ED125F37A11000BB823 /* WorkoutManager.swift */; };
+		DA073ED425F386B0000BB823 /* WorkoutListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA073ED325F386B0000BB823 /* WorkoutListItemView.swift */; };
+		DA07DB3325FF777D00D3E04B /* HeartRateZonesBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA07DB3225FF777D00D3E04B /* HeartRateZonesBarView.swift */; };
+		DA07DB3625FF78C300D3E04B /* HealthTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA07DB3525FF78C300D3E04B /* HealthTools.swift */; };
+		DA07DB3925FF791300D3E04B /* HeartRateZonesSingleBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA07DB3825FF791300D3E04B /* HeartRateZonesSingleBarView.swift */; };
+		DA07DB3B25FF7E6800D3E04B /* PreviewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA07DB3A25FF7E6800D3E04B /* PreviewTools.swift */; };
+		DA0F79A0265DA5A200BB3300 /* ChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0F799F265DA5A200BB3300 /* ChartStyle.swift */; };
+		DA0F79A2265DAC6F00BB3300 /* RandomAccessCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0F79A1265DAC6F00BB3300 /* RandomAccessCollection.swift */; };
+		DA1A1D8E26382E6B005A9EC2 /* HealthKitTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A1D8D26382E6B005A9EC2 /* HealthKitTrend.swift */; };
+		DA301B732611CE9A002CFDAB /* HealthKitMovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA301B722611CE9A002CFDAB /* HealthKitMovingAverage.swift */; };
+		DA301B7526121FC2002CFDAB /* QuantitySampleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA301B7426121FC2002CFDAB /* QuantitySampleExtensions.swift */; };
+		DA3FB9F82650730D0052FF76 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FB9F72650730D0052FF76 /* ProfileView.swift */; };
+		DA3FB9FA265085810052FF76 /* HealthKitCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FB9F9265085810052FF76 /* HealthKitCharacteristics.swift */; };
+		DA3FB9FC265087270052FF76 /* DateComponentsAge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FB9FB265087270052FF76 /* DateComponentsAge.swift */; };
+		DA3FBA0A265118010052FF76 /* Insights.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FBA09265118010052FF76 /* Insights.swift */; };
+		DA4833D72624FE4F005954D9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4833A02624E68C005954D9 /* WidgetKit.framework */; };
+		DA4833D82624FE4F005954D9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4833A22624E68D005954D9 /* SwiftUI.framework */; };
+		DA4833DB2624FE4F005954D9 /* HeartWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4833DA2624FE4F005954D9 /* HeartWidget.swift */; };
+		DA4833DD2624FE52005954D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4833DC2624FE52005954D9 /* Assets.xcassets */; };
+		DA4833E12624FE52005954D9 /* HeartWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA4833D62624FE4F005954D9 /* HeartWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DA4833E52624FE92005954D9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21DC25F189FC00D2A6CC /* Constants.swift */; };
+		DA4B858F265D93C100D51885 /* WorkoutSimpleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4B858E265D93C100D51885 /* WorkoutSimpleCardView.swift */; };
+		DA4DC7382656460B00B532DF /* SummaryNameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DC7372656460B00B532DF /* SummaryNameCardView.swift */; };
+		DA58AE722638B27300B3E252 /* WorkoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AE712638B27300B3E252 /* WorkoutExtension.swift */; };
+		DA5A9979264ED54D000945D0 /* WorkoutDataSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A9978264ED54D000945D0 /* WorkoutDataSample.swift */; };
+		DA5A997B264F03BC000945D0 /* TouchesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A997A264F03BC000945D0 /* TouchesHandler.swift */; };
+		DA5A997D264F0742000945D0 /* OptionalBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A997C264F0742000945D0 /* OptionalBinding.swift */; };
+		DA5A997F264F105D000945D0 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A997E264F105D000945D0 /* KeyboardExtension.swift */; };
+		DA5DD030265E36B400A7F5FB /* CalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DD02F265E36B400A7F5FB /* CalendarExtension.swift */; };
+		DA6664A52600D17200656005 /* WorkoutMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6664A42600D17200656005 /* WorkoutMapView.swift */; };
+		DA6664A72600D8DF00656005 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6664A62600D8DF00656005 /* HealthManager.swift */; };
+		DA6664A9260119CE00656005 /* HealthKitAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6664A8260119CE00656005 /* HealthKitAverage.swift */; };
+		DA6664AC2604CE0500656005 /* BaselineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6664AB2604CE0500656005 /* BaselineChartView.swift */; };
+		DA6664AE2604D23800656005 /* Z-Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6664AD2604D23800656005 /* Z-Score.swift */; };
+		DA6986EA2637453400DC3C42 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6986E92637453400DC3C42 /* ProgressBarView.swift */; };
+		DA7026952636AF130020BD55 /* HKActivitySummaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7026942636AF130020BD55 /* HKActivitySummaryExtensions.swift */; };
+		DA7D8BE8265FBA14007C4BB7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D8BE7265FBA14007C4BB7 /* Color.swift */; };
+		DAAF78B9262BF78E00D56537 /* PersonalBestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAF78B8262BF78E00D56537 /* PersonalBestView.swift */; };
+		DAAF78BB262BF7F700D56537 /* PersonalBestBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAF78BA262BF7F700D56537 /* PersonalBestBadgeView.swift */; };
+		DAC29B58263AA39900F67345 /* WorkoutChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC29B57263AA39900F67345 /* WorkoutChartView.swift */; };
+		DAC29B5A263AA8C200F67345 /* WorkoutManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC29B59263AA8C200F67345 /* WorkoutManagerExtension.swift */; };
+		DACB02FC25F4DDBE00233A8F /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACB02FB25F4DDBE00233A8F /* WorkoutDetailView.swift */; };
+		DAD1B82F25FEC4E1002734D7 /* Workouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1B82E25FEC4E1002734D7 /* Workouts.swift */; };
+		DAD1B83225FEC999002734D7 /* SingleWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1B83125FEC999002734D7 /* SingleWorkoutView.swift */; };
+		DAD1B83425FECAF0002734D7 /* SingleWorkoutHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1B83325FECAF0002734D7 /* SingleWorkoutHeaderView.swift */; };
+		DAD1B83625FECB9F002734D7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1B83525FECB9F002734D7 /* MapView.swift */; };
+		DADC21702652CC6D00684E75 /* InsightCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC216F2652CC6D00684E75 /* InsightCardView.swift */; };
+		DADC21722652CD6E00684E75 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC21712652CD6E00684E75 /* Health.swift */; };
+		DADC21742652D72C00684E75 /* HealthInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC21732652D72C00684E75 /* HealthInformation.swift */; };
+		DADC217626539EF600684E75 /* InsightDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC217526539EF600684E75 /* InsightDetails.swift */; };
+		DADC21792653A95100684E75 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DADC217B2653A95100684E75 /* Localizable.strings */; };
+		DAEB98662628429B0065751E /* WorkoutBests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB98652628429B0065751E /* WorkoutBests.swift */; };
 		DAEF21BA25F1751500D2A6CC /* BuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21B925F1751500D2A6CC /* BuddyApp.swift */; };
 		DAEF21BC25F1751500D2A6CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21BB25F1751500D2A6CC /* ContentView.swift */; };
 		DAEF21BE25F1751900D2A6CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAEF21BD25F1751900D2A6CC /* Assets.xcassets */; };
 		DAEF21C125F1751900D2A6CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAEF21C025F1751900D2A6CC /* Preview Assets.xcassets */; };
 		DAEF21C325F1751900D2A6CC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21C225F1751900D2A6CC /* Persistence.swift */; };
 		DAEF21C625F1751900D2A6CC /* Buddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21C425F1751900D2A6CC /* Buddy.xcdatamodeld */; };
+		DAEF21CE25F176E400D2A6CC /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21CD25F176E400D2A6CC /* UserData.swift */; };
+		DAEF21D025F178B500D2A6CC /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21CF25F178B500D2A6CC /* HealthKitManager.swift */; };
+		DAEF21D425F1824300D2A6CC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF21D325F1824300D2A6CC /* HealthKit.framework */; };
+		DAEF21D725F1844300D2A6CC /* ContentViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21D625F1844300D2A6CC /* ContentViewPlaceholder.swift */; };
+		DAEF21D925F184FF00D2A6CC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21D825F184FF00D2A6CC /* OnboardingView.swift */; };
+		DAEF21DB25F188A300D2A6CC /* DisabledSheetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21DA25F188A300D2A6CC /* DisabledSheetTool.swift */; };
+		DAEF21DD25F189FC00D2A6CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21DC25F189FC00D2A6CC /* Constants.swift */; };
+		DAEF21DF25F18A4A00D2A6CC /* HiddenTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21DE25F18A4A00D2A6CC /* HiddenTool.swift */; };
+		DAEF21E125F18A6500D2A6CC /* ConditionalTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21E025F18A6500D2A6CC /* ConditionalTool.swift */; };
+		DAEF21E525F19DD600D2A6CC /* CareKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = DAEF21E425F19DD600D2A6CC /* CareKitUI */; };
+		DAEF21E725F1A0F100D2A6CC /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21E625F1A0F100D2A6CC /* SummaryView.swift */; };
+		DAEF21E925F22E9C00D2A6CC /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21E825F22E9C00D2A6CC /* WorkoutView.swift */; };
+		DAEF21EB25F2349C00D2A6CC /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21EA25F2349C00D2A6CC /* LineChartView.swift */; };
+		DAEF21EE25F234D200D2A6CC /* ChartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21ED25F234D200D2A6CC /* ChartLineView.swift */; };
+		DAEF21F025F2351600D2A6CC /* ChartPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21EF25F2351600D2A6CC /* ChartPointView.swift */; };
+		DAEF21F225F2353200D2A6CC /* ChartGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21F125F2353200D2A6CC /* ChartGridView.swift */; };
+		DAEF21F425F2354C00D2A6CC /* ChartIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21F325F2354C00D2A6CC /* ChartIndicatorView.swift */; };
+		DAF5DBB32657DC7500F5AF59 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF5DBB22657DC7500F5AF59 /* SafariView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DA4833DF2624FE52005954D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DAEF21AE25F1751500D2A6CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA4833D52624FE4F005954D9;
+			remoteInfo = HeartWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA4833B32624E691005954D9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DA4833E12624FE52005954D9 /* HeartWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		DA073ED125F37A11000BB823 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		DA073ED325F386B0000BB823 /* WorkoutListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItemView.swift; sourceTree = "<group>"; };
+		DA07DB3225FF777D00D3E04B /* HeartRateZonesBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateZonesBarView.swift; sourceTree = "<group>"; };
+		DA07DB3525FF78C300D3E04B /* HealthTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTools.swift; sourceTree = "<group>"; };
+		DA07DB3825FF791300D3E04B /* HeartRateZonesSingleBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateZonesSingleBarView.swift; sourceTree = "<group>"; };
+		DA07DB3A25FF7E6800D3E04B /* PreviewTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTools.swift; sourceTree = "<group>"; };
+		DA0F799F265DA5A200BB3300 /* ChartStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStyle.swift; sourceTree = "<group>"; };
+		DA0F79A1265DAC6F00BB3300 /* RandomAccessCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAccessCollection.swift; sourceTree = "<group>"; };
+		DA1A1D8D26382E6B005A9EC2 /* HealthKitTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitTrend.swift; sourceTree = "<group>"; };
+		DA301B722611CE9A002CFDAB /* HealthKitMovingAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitMovingAverage.swift; sourceTree = "<group>"; };
+		DA301B7426121FC2002CFDAB /* QuantitySampleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitySampleExtensions.swift; sourceTree = "<group>"; };
+		DA3FB9F72650730D0052FF76 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DA3FB9F9265085810052FF76 /* HealthKitCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitCharacteristics.swift; sourceTree = "<group>"; };
+		DA3FB9FB265087270052FF76 /* DateComponentsAge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComponentsAge.swift; sourceTree = "<group>"; };
+		DA3FBA09265118010052FF76 /* Insights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insights.swift; sourceTree = "<group>"; };
+		DA4833A02624E68C005954D9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		DA4833A22624E68D005954D9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		DA4833D62624FE4F005954D9 /* HeartWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HeartWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA4833DA2624FE4F005954D9 /* HeartWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartWidget.swift; sourceTree = "<group>"; };
+		DA4833DC2624FE52005954D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA4833DE2624FE52005954D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA4B858E265D93C100D51885 /* WorkoutSimpleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSimpleCardView.swift; sourceTree = "<group>"; };
+		DA4DC7372656460B00B532DF /* SummaryNameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryNameCardView.swift; sourceTree = "<group>"; };
+		DA58AE712638B27300B3E252 /* WorkoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExtension.swift; sourceTree = "<group>"; };
+		DA5A9978264ED54D000945D0 /* WorkoutDataSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDataSample.swift; sourceTree = "<group>"; };
+		DA5A997A264F03BC000945D0 /* TouchesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesHandler.swift; sourceTree = "<group>"; };
+		DA5A997C264F0742000945D0 /* OptionalBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalBinding.swift; sourceTree = "<group>"; };
+		DA5A997E264F105D000945D0 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
+		DA5DD02F265E36B400A7F5FB /* CalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtension.swift; sourceTree = "<group>"; };
+		DA6664A42600D17200656005 /* WorkoutMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMapView.swift; sourceTree = "<group>"; };
+		DA6664A62600D8DF00656005 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		DA6664A8260119CE00656005 /* HealthKitAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAverage.swift; sourceTree = "<group>"; };
+		DA6664AB2604CE0500656005 /* BaselineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaselineChartView.swift; sourceTree = "<group>"; };
+		DA6664AD2604D23800656005 /* Z-Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Z-Score.swift"; sourceTree = "<group>"; };
+		DA6986E92637453400DC3C42 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		DA7026942636AF130020BD55 /* HKActivitySummaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKActivitySummaryExtensions.swift; sourceTree = "<group>"; };
+		DA7D8BE7265FBA14007C4BB7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		DAAF78B8262BF78E00D56537 /* PersonalBestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalBestView.swift; sourceTree = "<group>"; };
+		DAAF78BA262BF7F700D56537 /* PersonalBestBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalBestBadgeView.swift; sourceTree = "<group>"; };
+		DAC29B57263AA39900F67345 /* WorkoutChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutChartView.swift; sourceTree = "<group>"; };
+		DAC29B59263AA8C200F67345 /* WorkoutManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManagerExtension.swift; sourceTree = "<group>"; };
+		DACB02FB25F4DDBE00233A8F /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
+		DAD1B82E25FEC4E1002734D7 /* Workouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workouts.swift; sourceTree = "<group>"; };
+		DAD1B83125FEC999002734D7 /* SingleWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleWorkoutView.swift; sourceTree = "<group>"; };
+		DAD1B83325FECAF0002734D7 /* SingleWorkoutHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleWorkoutHeaderView.swift; sourceTree = "<group>"; };
+		DAD1B83525FECB9F002734D7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		DADC216F2652CC6D00684E75 /* InsightCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightCardView.swift; sourceTree = "<group>"; };
+		DADC21712652CD6E00684E75 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
+		DADC21732652D72C00684E75 /* HealthInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInformation.swift; sourceTree = "<group>"; };
+		DADC217526539EF600684E75 /* InsightDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightDetails.swift; sourceTree = "<group>"; };
+		DADC217A2653A95100684E75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DADC217C2653A96400684E75 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DAEB98652628429B0065751E /* WorkoutBests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutBests.swift; sourceTree = "<group>"; };
 		DAEF21B625F1751500D2A6CC /* Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAEF21B925F1751500D2A6CC /* BuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyApp.swift; sourceTree = "<group>"; };
 		DAEF21BB25F1751500D2A6CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -24,24 +171,141 @@
 		DAEF21C225F1751900D2A6CC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DAEF21C525F1751900D2A6CC /* Buddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Buddy.xcdatamodel; sourceTree = "<group>"; };
 		DAEF21C725F1751900D2A6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAEF21CD25F176E400D2A6CC /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		DAEF21CF25F178B500D2A6CC /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		DAEF21D125F1824300D2A6CC /* Buddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Buddy.entitlements; sourceTree = "<group>"; };
+		DAEF21D325F1824300D2A6CC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		DAEF21D625F1844300D2A6CC /* ContentViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewPlaceholder.swift; sourceTree = "<group>"; };
+		DAEF21D825F184FF00D2A6CC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		DAEF21DA25F188A300D2A6CC /* DisabledSheetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledSheetTool.swift; sourceTree = "<group>"; };
+		DAEF21DC25F189FC00D2A6CC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DAEF21DE25F18A4A00D2A6CC /* HiddenTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenTool.swift; sourceTree = "<group>"; };
+		DAEF21E025F18A6500D2A6CC /* ConditionalTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalTool.swift; sourceTree = "<group>"; };
+		DAEF21E625F1A0F100D2A6CC /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		DAEF21E825F22E9C00D2A6CC /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		DAEF21EA25F2349C00D2A6CC /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		DAEF21ED25F234D200D2A6CC /* ChartLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineView.swift; sourceTree = "<group>"; };
+		DAEF21EF25F2351600D2A6CC /* ChartPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPointView.swift; sourceTree = "<group>"; };
+		DAEF21F125F2353200D2A6CC /* ChartGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartGridView.swift; sourceTree = "<group>"; };
+		DAEF21F325F2354C00D2A6CC /* ChartIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIndicatorView.swift; sourceTree = "<group>"; };
+		DAF5DBB22657DC7500F5AF59 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DA4833D32624FE4F005954D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA4833D82624FE4F005954D9 /* SwiftUI.framework in Frameworks */,
+				DA4833D72624FE4F005954D9 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DAEF21B325F1751500D2A6CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEF21E525F19DD600D2A6CC /* CareKitUI in Frameworks */,
+				DAEF21D425F1824300D2A6CC /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA07DB3125FF776800D3E04B /* Detailed Cards */ = {
+			isa = PBXGroup;
+			children = (
+				DA07DB3725FF78F500D3E04B /* Heart Rate Zones */,
+				DA4B858E265D93C100D51885 /* WorkoutSimpleCardView.swift */,
+			);
+			path = "Detailed Cards";
+			sourceTree = "<group>";
+		};
+		DA07DB3425FF78AD00D3E04B /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				DA6664AA2604CDF500656005 /* Charts */,
+				DAEF21CF25F178B500D2A6CC /* HealthKitManager.swift */,
+				DA6664A62600D8DF00656005 /* HealthManager.swift */,
+				DADC21732652D72C00684E75 /* HealthInformation.swift */,
+				DA3FBA09265118010052FF76 /* Insights.swift */,
+				DADC217526539EF600684E75 /* InsightDetails.swift */,
+				DA07DB3525FF78C300D3E04B /* HealthTools.swift */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
+		DA07DB3725FF78F500D3E04B /* Heart Rate Zones */ = {
+			isa = PBXGroup;
+			children = (
+				DA07DB3225FF777D00D3E04B /* HeartRateZonesBarView.swift */,
+				DA07DB3825FF791300D3E04B /* HeartRateZonesSingleBarView.swift */,
+			);
+			path = "Heart Rate Zones";
+			sourceTree = "<group>";
+		};
+		DA4833D92624FE4F005954D9 /* HeartWidget */ = {
+			isa = PBXGroup;
+			children = (
+				DA4833DA2624FE4F005954D9 /* HeartWidget.swift */,
+				DA4833DC2624FE52005954D9 /* Assets.xcassets */,
+				DA4833DE2624FE52005954D9 /* Info.plist */,
+			);
+			path = HeartWidget;
+			sourceTree = "<group>";
+		};
+		DA6664AA2604CDF500656005 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				DA6664AB2604CE0500656005 /* BaselineChartView.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		DA6664AF2604D64100656005 /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				DA6664AD2604D23800656005 /* Z-Score.swift */,
+			);
+			path = Algorithms;
+			sourceTree = "<group>";
+		};
+		DAD1B83025FEC904002734D7 /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				DA073ED125F37A11000BB823 /* WorkoutManager.swift */,
+				DAEB98652628429B0065751E /* WorkoutBests.swift */,
+				DAEB98642628426D0065751E /* Views */,
+			);
+			path = Workouts;
+			sourceTree = "<group>";
+		};
+		DAEB98642628426D0065751E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA07DB3125FF776800D3E04B /* Detailed Cards */,
+				DAEF21E825F22E9C00D2A6CC /* WorkoutView.swift */,
+				DA073ED325F386B0000BB823 /* WorkoutListItemView.swift */,
+				DA6664A42600D17200656005 /* WorkoutMapView.swift */,
+				DAAF78B8262BF78E00D56537 /* PersonalBestView.swift */,
+				DAD1B83325FECAF0002734D7 /* SingleWorkoutHeaderView.swift */,
+				DAC29B57263AA39900F67345 /* WorkoutChartView.swift */,
+				DAAF78BA262BF7F700D56537 /* PersonalBestBadgeView.swift */,
+				DACB02FB25F4DDBE00233A8F /* WorkoutDetailView.swift */,
+				DAD1B83125FEC999002734D7 /* SingleWorkoutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DAEF21AD25F1751500D2A6CC = {
 			isa = PBXGroup;
 			children = (
+				DADC217B2653A95100684E75 /* Localizable.strings */,
 				DAEF21B825F1751500D2A6CC /* Buddy */,
+				DA4833D92624FE4F005954D9 /* HeartWidget */,
 				DAEF21B725F1751500D2A6CC /* Products */,
+				DAEF21D225F1824300D2A6CC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				DAEF21B625F1751500D2A6CC /* Buddy.app */,
+				DA4833D62624FE4F005954D9 /* HeartWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,11 +323,25 @@
 			children = (
 				DAEF21B925F1751500D2A6CC /* BuddyApp.swift */,
 				DAEF21BB25F1751500D2A6CC /* ContentView.swift */,
-				DAEF21BD25F1751900D2A6CC /* Assets.xcassets */,
+				DAD1B83025FEC904002734D7 /* Workouts */,
 				DAEF21C225F1751900D2A6CC /* Persistence.swift */,
-				DAEF21C725F1751900D2A6CC /* Info.plist */,
+				DA07DB3425FF78AD00D3E04B /* Health */,
+				DAD1B83525FECB9F002734D7 /* MapView.swift */,
+				DAEF21D825F184FF00D2A6CC /* OnboardingView.swift */,
+				DA3FB9F72650730D0052FF76 /* ProfileView.swift */,
+				DA4DC7372656460B00B532DF /* SummaryNameCardView.swift */,
+				DA6986E92637453400DC3C42 /* ProgressBarView.swift */,
+				DAEF21E625F1A0F100D2A6CC /* SummaryView.swift */,
+				DAEF21EC25F234B500D2A6CC /* LineChart */,
+				DAEF21CD25F176E400D2A6CC /* UserData.swift */,
+				DAEF21D625F1844300D2A6CC /* ContentViewPlaceholder.swift */,
+				DAEF21E225F18A7000D2A6CC /* Tools */,
+				DAEF21DC25F189FC00D2A6CC /* Constants.swift */,
 				DAEF21C425F1751900D2A6CC /* Buddy.xcdatamodeld */,
 				DAEF21BF25F1751900D2A6CC /* Preview Content */,
+				DAEF21D125F1824300D2A6CC /* Buddy.entitlements */,
+				DAEF21BD25F1751900D2A6CC /* Assets.xcassets */,
+				DAEF21C725F1751900D2A6CC /* Info.plist */,
 			);
 			path = Buddy;
 			sourceTree = "<group>";
@@ -71,13 +350,85 @@
 			isa = PBXGroup;
 			children = (
 				DAEF21C025F1751900D2A6CC /* Preview Assets.xcassets */,
+				DAD1B82E25FEC4E1002734D7 /* Workouts.swift */,
+				DADC21712652CD6E00684E75 /* Health.swift */,
+				DA07DB3A25FF7E6800D3E04B /* PreviewTools.swift */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DAEF21D225F1824300D2A6CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF21D325F1824300D2A6CC /* HealthKit.framework */,
+				DA4833A02624E68C005954D9 /* WidgetKit.framework */,
+				DA4833A22624E68D005954D9 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DAEF21E225F18A7000D2A6CC /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF21DE25F18A4A00D2A6CC /* HiddenTool.swift */,
+				DA6664A8260119CE00656005 /* HealthKitAverage.swift */,
+				DAC29B59263AA8C200F67345 /* WorkoutManagerExtension.swift */,
+				DA301B7426121FC2002CFDAB /* QuantitySampleExtensions.swift */,
+				DA1A1D8D26382E6B005A9EC2 /* HealthKitTrend.swift */,
+				DAF5DBB22657DC7500F5AF59 /* SafariView.swift */,
+				DA5A997A264F03BC000945D0 /* TouchesHandler.swift */,
+				DA3FB9F9265085810052FF76 /* HealthKitCharacteristics.swift */,
+				DA7026942636AF130020BD55 /* HKActivitySummaryExtensions.swift */,
+				DA3FB9FB265087270052FF76 /* DateComponentsAge.swift */,
+				DA5A997C264F0742000945D0 /* OptionalBinding.swift */,
+				DA5DD02F265E36B400A7F5FB /* CalendarExtension.swift */,
+				DA5A997E264F105D000945D0 /* KeyboardExtension.swift */,
+				DA0F79A1265DAC6F00BB3300 /* RandomAccessCollection.swift */,
+				DA5A9978264ED54D000945D0 /* WorkoutDataSample.swift */,
+				DA301B722611CE9A002CFDAB /* HealthKitMovingAverage.swift */,
+				DA7D8BE7265FBA14007C4BB7 /* Color.swift */,
+				DA58AE712638B27300B3E252 /* WorkoutExtension.swift */,
+				DADC216F2652CC6D00684E75 /* InsightCardView.swift */,
+				DAEF21E025F18A6500D2A6CC /* ConditionalTool.swift */,
+				DAEF21DA25F188A300D2A6CC /* DisabledSheetTool.swift */,
+				DA6664AF2604D64100656005 /* Algorithms */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		DAEF21EC25F234B500D2A6CC /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF21EA25F2349C00D2A6CC /* LineChartView.swift */,
+				DAEF21ED25F234D200D2A6CC /* ChartLineView.swift */,
+				DAEF21EF25F2351600D2A6CC /* ChartPointView.swift */,
+				DAEF21F125F2353200D2A6CC /* ChartGridView.swift */,
+				DAEF21F325F2354C00D2A6CC /* ChartIndicatorView.swift */,
+				DA0F799F265DA5A200BB3300 /* ChartStyle.swift */,
+			);
+			path = LineChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DA4833D52624FE4F005954D9 /* HeartWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA4833E22624FE52005954D9 /* Build configuration list for PBXNativeTarget "HeartWidgetExtension" */;
+			buildPhases = (
+				DA4833D22624FE4F005954D9 /* Sources */,
+				DA4833D32624FE4F005954D9 /* Frameworks */,
+				DA4833D42624FE4F005954D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeartWidgetExtension;
+			productName = HeartWidgetExtension;
+			productReference = DA4833D62624FE4F005954D9 /* HeartWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DAEF21B525F1751500D2A6CC /* Buddy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAEF21CA25F1751900D2A6CC /* Build configuration list for PBXNativeTarget "Buddy" */;
@@ -85,12 +436,17 @@
 				DAEF21B225F1751500D2A6CC /* Sources */,
 				DAEF21B325F1751500D2A6CC /* Frameworks */,
 				DAEF21B425F1751500D2A6CC /* Resources */,
+				DA4833B32624E691005954D9 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA4833E02624FE52005954D9 /* PBXTargetDependency */,
 			);
 			name = Buddy;
+			packageProductDependencies = (
+				DAEF21E425F19DD600D2A6CC /* CareKitUI */,
+			);
 			productName = Buddy;
 			productReference = DAEF21B625F1751500D2A6CC /* Buddy.app */;
 			productType = "com.apple.product-type.application";
@@ -104,6 +460,9 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					DA4833D52624FE4F005954D9 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					DAEF21B525F1751500D2A6CC = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -116,23 +475,37 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = DAEF21AD25F1751500D2A6CC;
+			packageReferences = (
+				DAEF21E325F19DD600D2A6CC /* XCRemoteSwiftPackageReference "CareKit" */,
+			);
 			productRefGroup = DAEF21B725F1751500D2A6CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				DAEF21B525F1751500D2A6CC /* Buddy */,
+				DA4833D52624FE4F005954D9 /* HeartWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DA4833D42624FE4F005954D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA4833DD2624FE52005954D9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DAEF21B425F1751500D2A6CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DAEF21C125F1751900D2A6CC /* Preview Assets.xcassets in Resources */,
+				DADC21792653A95100684E75 /* Localizable.strings in Resources */,
 				DAEF21BE25F1751900D2A6CC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,20 +513,154 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DA4833D22624FE4F005954D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA4833DB2624FE4F005954D9 /* HeartWidget.swift in Sources */,
+				DA4833E52624FE92005954D9 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DAEF21B225F1751500D2A6CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEF21E925F22E9C00D2A6CC /* WorkoutView.swift in Sources */,
+				DAD1B82F25FEC4E1002734D7 /* Workouts.swift in Sources */,
+				DADC21702652CC6D00684E75 /* InsightCardView.swift in Sources */,
+				DAD1B83225FEC999002734D7 /* SingleWorkoutView.swift in Sources */,
+				DAF5DBB32657DC7500F5AF59 /* SafariView.swift in Sources */,
+				DAEB98662628429B0065751E /* WorkoutBests.swift in Sources */,
+				DAEF21E725F1A0F100D2A6CC /* SummaryView.swift in Sources */,
 				DAEF21C325F1751900D2A6CC /* Persistence.swift in Sources */,
+				DA7026952636AF130020BD55 /* HKActivitySummaryExtensions.swift in Sources */,
+				DA5DD030265E36B400A7F5FB /* CalendarExtension.swift in Sources */,
+				DAEF21F425F2354C00D2A6CC /* ChartIndicatorView.swift in Sources */,
+				DA5A997B264F03BC000945D0 /* TouchesHandler.swift in Sources */,
+				DAEF21DB25F188A300D2A6CC /* DisabledSheetTool.swift in Sources */,
+				DA58AE722638B27300B3E252 /* WorkoutExtension.swift in Sources */,
+				DA07DB3625FF78C300D3E04B /* HealthTools.swift in Sources */,
+				DAEF21E125F18A6500D2A6CC /* ConditionalTool.swift in Sources */,
 				DAEF21BC25F1751500D2A6CC /* ContentView.swift in Sources */,
+				DAEF21D025F178B500D2A6CC /* HealthKitManager.swift in Sources */,
+				DA6986EA2637453400DC3C42 /* ProgressBarView.swift in Sources */,
+				DA6664A52600D17200656005 /* WorkoutMapView.swift in Sources */,
+				DA3FB9FC265087270052FF76 /* DateComponentsAge.swift in Sources */,
 				DAEF21C625F1751900D2A6CC /* Buddy.xcdatamodeld in Sources */,
+				DA073ED425F386B0000BB823 /* WorkoutListItemView.swift in Sources */,
+				DA3FB9FA265085810052FF76 /* HealthKitCharacteristics.swift in Sources */,
+				DAEF21DD25F189FC00D2A6CC /* Constants.swift in Sources */,
+				DA07DB3925FF791300D3E04B /* HeartRateZonesSingleBarView.swift in Sources */,
+				DAEF21F225F2353200D2A6CC /* ChartGridView.swift in Sources */,
+				DA0F79A0265DA5A200BB3300 /* ChartStyle.swift in Sources */,
+				DAC29B5A263AA8C200F67345 /* WorkoutManagerExtension.swift in Sources */,
+				DAEF21CE25F176E400D2A6CC /* UserData.swift in Sources */,
+				DA1A1D8E26382E6B005A9EC2 /* HealthKitTrend.swift in Sources */,
+				DA301B7526121FC2002CFDAB /* QuantitySampleExtensions.swift in Sources */,
+				DA5A997F264F105D000945D0 /* KeyboardExtension.swift in Sources */,
+				DAC29B58263AA39900F67345 /* WorkoutChartView.swift in Sources */,
+				DA6664AC2604CE0500656005 /* BaselineChartView.swift in Sources */,
+				DA4DC7382656460B00B532DF /* SummaryNameCardView.swift in Sources */,
+				DACB02FC25F4DDBE00233A8F /* WorkoutDetailView.swift in Sources */,
+				DAAF78BB262BF7F700D56537 /* PersonalBestBadgeView.swift in Sources */,
+				DAEF21DF25F18A4A00D2A6CC /* HiddenTool.swift in Sources */,
+				DA6664A9260119CE00656005 /* HealthKitAverage.swift in Sources */,
+				DAD1B83625FECB9F002734D7 /* MapView.swift in Sources */,
+				DAD1B83425FECAF0002734D7 /* SingleWorkoutHeaderView.swift in Sources */,
+				DA07DB3325FF777D00D3E04B /* HeartRateZonesBarView.swift in Sources */,
+				DA7D8BE8265FBA14007C4BB7 /* Color.swift in Sources */,
+				DADC217626539EF600684E75 /* InsightDetails.swift in Sources */,
+				DA5A997D264F0742000945D0 /* OptionalBinding.swift in Sources */,
+				DAAF78B9262BF78E00D56537 /* PersonalBestView.swift in Sources */,
+				DAEF21EB25F2349C00D2A6CC /* LineChartView.swift in Sources */,
+				DA5A9979264ED54D000945D0 /* WorkoutDataSample.swift in Sources */,
+				DAEF21F025F2351600D2A6CC /* ChartPointView.swift in Sources */,
+				DA4B858F265D93C100D51885 /* WorkoutSimpleCardView.swift in Sources */,
+				DA6664AE2604D23800656005 /* Z-Score.swift in Sources */,
+				DAEF21D925F184FF00D2A6CC /* OnboardingView.swift in Sources */,
+				DA3FB9F82650730D0052FF76 /* ProfileView.swift in Sources */,
 				DAEF21BA25F1751500D2A6CC /* BuddyApp.swift in Sources */,
+				DA073ED225F37A11000BB823 /* WorkoutManager.swift in Sources */,
+				DA3FBA0A265118010052FF76 /* Insights.swift in Sources */,
+				DAEF21D725F1844300D2A6CC /* ContentViewPlaceholder.swift in Sources */,
+				DADC21742652D72C00684E75 /* HealthInformation.swift in Sources */,
+				DA0F79A2265DAC6F00BB3300 /* RandomAccessCollection.swift in Sources */,
+				DA301B732611CE9A002CFDAB /* HealthKitMovingAverage.swift in Sources */,
+				DA07DB3B25FF7E6800D3E04B /* PreviewTools.swift in Sources */,
+				DADC21722652CD6E00684E75 /* Health.swift in Sources */,
+				DAEF21EE25F234D200D2A6CC /* ChartLineView.swift in Sources */,
+				DA6664A72600D8DF00656005 /* HealthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DA4833E02624FE52005954D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA4833D52624FE4F005954D9 /* HeartWidgetExtension */;
+			targetProxy = DA4833DF2624FE52005954D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DADC217B2653A95100684E75 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DADC217A2653A95100684E75 /* en */,
+				DADC217C2653A96400684E75 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		DA4833E32624FE52005954D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8APFUFV53Q;
+				INFOPLIST_FILE = HeartWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.magnusburton.Buddy.HeartWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		DA4833E42624FE52005954D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8APFUFV53Q;
+				INFOPLIST_FILE = HeartWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.magnusburton.Buddy.HeartWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		DAEF21C825F1751900D2A6CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -205,7 +712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -260,7 +767,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -273,14 +780,16 @@
 		DAEF21CB25F1751900D2A6CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Buddy/Buddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Buddy/Preview Content\"";
 				DEVELOPMENT_TEAM = 8APFUFV53Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Buddy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -288,21 +797,23 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.magnusburton.Buddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		DAEF21CC25F1751900D2A6CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Buddy/Buddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Buddy/Preview Content\"";
 				DEVELOPMENT_TEAM = 8APFUFV53Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Buddy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,13 +821,22 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.magnusburton.Buddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DA4833E22624FE52005954D9 /* Build configuration list for PBXNativeTarget "HeartWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA4833E32624FE52005954D9 /* Debug */,
+				DA4833E42624FE52005954D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DAEF21B125F1751500D2A6CC /* Build configuration list for PBXProject "Buddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -336,6 +856,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DAEF21E325F19DD600D2A6CC /* XCRemoteSwiftPackageReference "CareKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/carekit-apple/CareKit.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DAEF21E425F19DD600D2A6CC /* CareKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAEF21E325F19DD600D2A6CC /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKitUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DAEF21C425F1751900D2A6CC /* Buddy.xcdatamodeld */ = {
