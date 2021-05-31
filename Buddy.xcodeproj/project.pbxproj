@@ -22,12 +22,6 @@
 		DA3FB9FA265085810052FF76 /* HealthKitCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FB9F9265085810052FF76 /* HealthKitCharacteristics.swift */; };
 		DA3FB9FC265087270052FF76 /* DateComponentsAge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FB9FB265087270052FF76 /* DateComponentsAge.swift */; };
 		DA3FBA0A265118010052FF76 /* Insights.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FBA09265118010052FF76 /* Insights.swift */; };
-		DA4833D72624FE4F005954D9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4833A02624E68C005954D9 /* WidgetKit.framework */; };
-		DA4833D82624FE4F005954D9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4833A22624E68D005954D9 /* SwiftUI.framework */; };
-		DA4833DB2624FE4F005954D9 /* HeartWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4833DA2624FE4F005954D9 /* HeartWidget.swift */; };
-		DA4833DD2624FE52005954D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4833DC2624FE52005954D9 /* Assets.xcassets */; };
-		DA4833E12624FE52005954D9 /* HeartWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA4833D62624FE4F005954D9 /* HeartWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DA4833E52624FE92005954D9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF21DC25F189FC00D2A6CC /* Constants.swift */; };
 		DA4B858F265D93C100D51885 /* WorkoutSimpleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4B858E265D93C100D51885 /* WorkoutSimpleCardView.swift */; };
 		DA4DC7382656460B00B532DF /* SummaryNameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DC7372656460B00B532DF /* SummaryNameCardView.swift */; };
 		DA58AE722638B27300B3E252 /* WorkoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AE712638B27300B3E252 /* WorkoutExtension.swift */; };
@@ -85,30 +79,6 @@
 		DAF5DBB32657DC7500F5AF59 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF5DBB22657DC7500F5AF59 /* SafariView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		DA4833DF2624FE52005954D9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DAEF21AE25F1751500D2A6CC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DA4833D52624FE4F005954D9;
-			remoteInfo = HeartWidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		DA4833B32624E691005954D9 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				DA4833E12624FE52005954D9 /* HeartWidgetExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		DA073ED125F37A11000BB823 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		DA073ED325F386B0000BB823 /* WorkoutListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItemView.swift; sourceTree = "<group>"; };
@@ -125,12 +95,7 @@
 		DA3FB9F9265085810052FF76 /* HealthKitCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitCharacteristics.swift; sourceTree = "<group>"; };
 		DA3FB9FB265087270052FF76 /* DateComponentsAge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComponentsAge.swift; sourceTree = "<group>"; };
 		DA3FBA09265118010052FF76 /* Insights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insights.swift; sourceTree = "<group>"; };
-		DA4833A02624E68C005954D9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		DA4833A22624E68D005954D9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		DA4833D62624FE4F005954D9 /* HeartWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HeartWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA4833DA2624FE4F005954D9 /* HeartWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartWidget.swift; sourceTree = "<group>"; };
-		DA4833DC2624FE52005954D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DA4833DE2624FE52005954D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA4B858E265D93C100D51885 /* WorkoutSimpleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSimpleCardView.swift; sourceTree = "<group>"; };
 		DA4DC7372656460B00B532DF /* SummaryNameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryNameCardView.swift; sourceTree = "<group>"; };
 		DA58AE712638B27300B3E252 /* WorkoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExtension.swift; sourceTree = "<group>"; };
@@ -192,15 +157,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		DA4833D32624FE4F005954D9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA4833D82624FE4F005954D9 /* SwiftUI.framework in Frameworks */,
-				DA4833D72624FE4F005954D9 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DAEF21B325F1751500D2A6CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,16 +199,6 @@
 				DA07DB3825FF791300D3E04B /* HeartRateZonesSingleBarView.swift */,
 			);
 			path = "Heart Rate Zones";
-			sourceTree = "<group>";
-		};
-		DA4833D92624FE4F005954D9 /* HeartWidget */ = {
-			isa = PBXGroup;
-			children = (
-				DA4833DA2624FE4F005954D9 /* HeartWidget.swift */,
-				DA4833DC2624FE52005954D9 /* Assets.xcassets */,
-				DA4833DE2624FE52005954D9 /* Info.plist */,
-			);
-			path = HeartWidget;
 			sourceTree = "<group>";
 		};
 		DA6664AA2604CDF500656005 /* Charts */ = {
@@ -303,7 +249,6 @@
 			children = (
 				DADC217B2653A95100684E75 /* Localizable.strings */,
 				DAEF21B825F1751500D2A6CC /* Buddy */,
-				DA4833D92624FE4F005954D9 /* HeartWidget */,
 				DAEF21B725F1751500D2A6CC /* Products */,
 				DAEF21D225F1824300D2A6CC /* Frameworks */,
 			);
@@ -313,7 +258,6 @@
 			isa = PBXGroup;
 			children = (
 				DAEF21B625F1751500D2A6CC /* Buddy.app */,
-				DA4833D62624FE4F005954D9 /* HeartWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				DAEF21D325F1824300D2A6CC /* HealthKit.framework */,
-				DA4833A02624E68C005954D9 /* WidgetKit.framework */,
 				DA4833A22624E68D005954D9 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
@@ -412,23 +355,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA4833D52624FE4F005954D9 /* HeartWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DA4833E22624FE52005954D9 /* Build configuration list for PBXNativeTarget "HeartWidgetExtension" */;
-			buildPhases = (
-				DA4833D22624FE4F005954D9 /* Sources */,
-				DA4833D32624FE4F005954D9 /* Frameworks */,
-				DA4833D42624FE4F005954D9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = HeartWidgetExtension;
-			productName = HeartWidgetExtension;
-			productReference = DA4833D62624FE4F005954D9 /* HeartWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		DAEF21B525F1751500D2A6CC /* Buddy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAEF21CA25F1751900D2A6CC /* Build configuration list for PBXNativeTarget "Buddy" */;
@@ -436,12 +362,10 @@
 				DAEF21B225F1751500D2A6CC /* Sources */,
 				DAEF21B325F1751500D2A6CC /* Frameworks */,
 				DAEF21B425F1751500D2A6CC /* Resources */,
-				DA4833B32624E691005954D9 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DA4833E02624FE52005954D9 /* PBXTargetDependency */,
 			);
 			name = Buddy;
 			packageProductDependencies = (
@@ -460,9 +384,6 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					DA4833D52624FE4F005954D9 = {
-						CreatedOnToolsVersion = 12.5;
-					};
 					DAEF21B525F1751500D2A6CC = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -486,20 +407,11 @@
 			projectRoot = "";
 			targets = (
 				DAEF21B525F1751500D2A6CC /* Buddy */,
-				DA4833D52624FE4F005954D9 /* HeartWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DA4833D42624FE4F005954D9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA4833DD2624FE52005954D9 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DAEF21B425F1751500D2A6CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -513,15 +425,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		DA4833D22624FE4F005954D9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA4833DB2624FE4F005954D9 /* HeartWidget.swift in Sources */,
-				DA4833E52624FE92005954D9 /* Constants.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DAEF21B225F1751500D2A6CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -596,14 +499,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		DA4833E02624FE52005954D9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DA4833D52624FE4F005954D9 /* HeartWidgetExtension */;
-			targetProxy = DA4833DF2624FE52005954D9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		DADC217B2653A95100684E75 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -617,50 +512,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		DA4833E32624FE52005954D9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8APFUFV53Q;
-				INFOPLIST_FILE = HeartWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.magnusburton.Buddy.HeartWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		DA4833E42624FE52005954D9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8APFUFV53Q;
-				INFOPLIST_FILE = HeartWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.magnusburton.Buddy.HeartWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 		DAEF21C825F1751900D2A6CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -712,7 +563,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -767,7 +618,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -780,7 +631,6 @@
 		DAEF21CB25F1751900D2A6CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Buddy/Buddy.entitlements;
@@ -804,7 +654,6 @@
 		DAEF21CC25F1751900D2A6CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Buddy/Buddy.entitlements;
@@ -828,15 +677,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DA4833E22624FE52005954D9 /* Build configuration list for PBXNativeTarget "HeartWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DA4833E32624FE52005954D9 /* Debug */,
-				DA4833E42624FE52005954D9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		DAEF21B125F1751500D2A6CC /* Build configuration list for PBXProject "Buddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
