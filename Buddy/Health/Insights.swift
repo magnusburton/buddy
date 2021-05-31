@@ -7,6 +7,7 @@
 
 import Foundation
 import HealthKit
+import SwiftUI
 
 extension HealthManager {
 	enum InsightType: CaseIterable {
@@ -18,6 +19,8 @@ extension HealthManager {
 		case weekendWeekComparison
 		/// Compare past 28 days with previous 28 days
 		case twoMonthComparison
+		/// Get best day of the past week
+		case topDayOfWeek
 	}
 
 	struct Insight: Identifiable {
@@ -27,7 +30,7 @@ extension HealthManager {
 		/// The results of the given health data type `healthType` and the type of insights made `type`
 		var results: InsightResult?
 		/// Explaination of the insight and how to improve/maintain it
-		var details: String?
+		var details: LocalizedStringKey?
 
 		mutating func setResults(_ results: InsightResult) {
 			self.results = results
@@ -68,7 +71,10 @@ extension HealthManager {
 	static let possibleInsights: [DataType: [InsightType]] = [
 		.bodyFat: [.twoWeekComparison, .twoMonthComparison, .weekdayComparison],
 		.hrv: [.twoWeekComparison, .twoMonthComparison, .weekendWeekComparison],
-		.rhr: [.twoMonthComparison, .twoWeekComparison, .weekendWeekComparison]
+		.rhr: [.twoMonthComparison, .twoWeekComparison, .weekendWeekComparison],
+//		.distance: [.topDayOfWeek, .twoWeekComparison, .weekdayComparison, .weekendWeekComparison, .twoMonthComparison],
+//		.steps: [.topDayOfWeek, .twoWeekComparison, .weekdayComparison, .weekendWeekComparison, .twoMonthComparison],
+//		.stairs: [.topDayOfWeek, .twoWeekComparison, .weekdayComparison, .weekendWeekComparison, .twoMonthComparison]
 	]
 
 	func generateInsights() {
@@ -82,11 +88,11 @@ extension HealthManager {
 
 				// The insight for the given type is not forbidden, continue generating insight!
 				generateInsight(insight, type: type) { results in
-					var insight = Insight(type: insight, healthType: type, results: results)
-					insight.generateDetails()
-					
-					if results.results == .significant {
-						DispatchQueue.main.async {
+					DispatchQueue.main.async {
+						var insight = Insight(type: insight, healthType: type, results: results)
+						insight.generateDetails()
+						
+						if results.results == .significant {
 							self.insights.append(insight)
 						}
 					}
@@ -135,7 +141,7 @@ extension HealthManager {
 				fatalError("*** Not same weekday for \(insight) insight of \(type) ***")
 			}
 
-			let interval = DateInterval(start: previousMonthWeekday.startOfDay, end: calendar.startOfDay(for: yesterday))
+			let interval = DateInterval(start: previousMonthWeekday.startOfDay, end: yesterday.endOfDay)
 			/// Return matching weekdays in previous 28 days
 			let pastWeekdays = items.filter { calendar.component(.weekday, from: $0.endDate) == weekday && interval.contains($0.endDate) }
 			let yesterdayItems = items.filter { calendar.isDateInYesterday($0.endDate) }
@@ -180,19 +186,23 @@ extension HealthManager {
 				completion(.init(results: .undetermined))
 			}
 
-			guard let saturday = calendar.date(byAdding: .day, value: -1, to: now) else {
+			guard let saturday = calendar.date(byAdding: .day, value: -2, to: now) else {
 				completion(.init(results: .undetermined))
 				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
 			}
 
-			let weekendInterval = DateInterval(start: saturday.startOfDay, end: calendar.startOfDay(for: now))
+			let weekendInterval = DateInterval(start: saturday.startOfDay, end: yesterday.endOfDay)
 
-			guard let monday = calendar.date(byAdding: .day, value: -5, to: now) else {
+			guard let monday = calendar.date(byAdding: .day, value: -7, to: now) else {
+				completion(.init(results: .undetermined))
+				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
+			}
+			guard let friday = calendar.date(byAdding: .day, value: -3, to: now) else {
 				completion(.init(results: .undetermined))
 				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
 			}
 
-			let weekInterval = DateInterval(start: monday.startOfDay, end: calendar.startOfDay(for: saturday))
+			let weekInterval = DateInterval(start: monday.startOfDay, end: friday.endOfDay)
 
 			let pastWeekend = items.filter { weekendInterval.contains($0.endDate) }
 			let pastWeek = items.filter { weekInterval.contains($0.endDate) }
@@ -228,19 +238,23 @@ extension HealthManager {
 				]))
 			}
 		} else if insight == .twoWeekComparison {
-			let endPeriodTwo = now.startOfDay
+			guard let yesterday = calendar.date(byAdding: .day, value: -1, to: now) else {
+				completion(.init(results: .undetermined))
+				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
+			}
+			let endPeriodTwo = yesterday.endOfDay
 			
 			guard let previousPeriod = calendar.date(byAdding: .day, value: -7, to: now) else {
 				completion(.init(results: .undetermined))
 				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
 			}
-			let endPeriodOne = calendar.startOfDay(for: previousPeriod)
+			let endPeriodOne = previousPeriod.startOfDay
 			
 			guard let previousSecondPeriod = calendar.date(byAdding: .day, value: -2*7, to: now) else {
 				completion(.init(results: .undetermined))
 				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
 			}
-			let startPeriodOne = calendar.startOfDay(for: previousSecondPeriod)
+			let startPeriodOne = previousSecondPeriod.startOfDay
 			
 			let firstPeriod = DateInterval(start: startPeriodOne, end: endPeriodOne)
 			let secondPeriod = DateInterval(start: endPeriodOne, end: endPeriodTwo)
@@ -279,19 +293,23 @@ extension HealthManager {
 				]))
 			}
 		} else if insight == .twoMonthComparison {
-			let endPeriodTwo = calendar.startOfDay(for: now)
+			guard let yesterday = calendar.date(byAdding: .day, value: -1, to: now) else {
+				completion(.init(results: .undetermined))
+				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
+			}
+			let endPeriodTwo = yesterday.endOfDay
 			
 			guard let previousPeriod = calendar.date(byAdding: .day, value: -28, to: now) else {
 				completion(.init(results: .undetermined))
 				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
 			}
-			let endPeriodOne = calendar.startOfDay(for: previousPeriod)
+			let endPeriodOne = previousPeriod.startOfDay
 			
 			guard let previousSecondPeriod = calendar.date(byAdding: .day, value: -2*28, to: now) else {
 				completion(.init(results: .undetermined))
 				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
 			}
-			let startPeriodOne = calendar.startOfDay(for: previousSecondPeriod)
+			let startPeriodOne = previousSecondPeriod.startOfDay
 			
 			let firstPeriod = DateInterval(start: startPeriodOne, end: endPeriodOne)
 			let secondPeriod = DateInterval(start: endPeriodOne, end: endPeriodTwo)

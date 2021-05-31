@@ -46,3 +46,12 @@
 "Workouts" = "Träning";
 "No data found." = "Ingen data hittad.";
 "Make sure you've granted Buddy permission\nto read your recent workouts." = "Kolla så att du har gett Buddy tillgång till dina Träningspass i Hälsa-appen.";
+
+/// INSIGHTS
+"INSIGHT_ERROR_TEXT" = "Ingen inblick kunde genereras just nu.";
+"INSIGHT_INSIGNIFICANT_TEXT" = "Den genererade inblicken var ofullständig eller visade ej någon signifikans.";
+
+"INSIGHT_RHR_TWOWEEKCOMPARISON_UP" = "Din genomsnittliga vilopuls var högre den senaste veckan jämfört med veckan innan. Se till att vila upp dig tillräcklig efter träningar och att ha en god kost.";
+"INSIGHT_RHR_TWOWEEKCOMPARISON_DOWN" = "Under de senaste sju dagarna sjönk din vilopuls i snitt jämfört med veckan innan. Snyggt!";
+"INSIGHT_RHR_WEEKENDWEEKCOMPARISON_UP" = "Under helgen hade du en högre vilopuls än under veckodagarna innan. En förhöjd vilopuls kan bero på stress eller alkohol och meditation kan hjälpa dig att få en lägre vilopuls.";
+"INSIGHT_RHR_WEEKENDWEEKCOMPARISON_DOWN" = "Vilopulsen var i snitt under helgen lägre än under veckodagarna. Bra jobbat!";

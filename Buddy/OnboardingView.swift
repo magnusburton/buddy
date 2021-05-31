@@ -40,7 +40,7 @@ struct OnboardingView: View {
 					OnboardingPageTextView(
 						image: Image(systemName: "face.smiling.fill"),
 						title: Text("Hi, I'm Buddy!"),
-						description: Text("Buddy uses your Apple Health data to give you better recommendations based on your lifestyle. You'll see a consolidated view of all your health data so you can improve your way of life."),
+						description: Text("Get an easy to grasp, simplified overview of your health and lifestyle in order for you to make well educated decisions regarding your health."),
 						selected: $selected
 					)
 					.tag(0)

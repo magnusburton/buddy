@@ -19,6 +19,7 @@ class HealthKitManager: ObservableObject {
 		
 		HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning)!,
 		HKSampleType.quantityType(forIdentifier: .stepCount)!,
+		HKSampleType.quantityType(forIdentifier: .flightsClimbed)!,
 		
 		HKCharacteristicType.characteristicType(forIdentifier: .biologicalSex)!,
 		HKCharacteristicType.characteristicType(forIdentifier: .dateOfBirth)!,

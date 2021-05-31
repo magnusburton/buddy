@@ -51,7 +51,7 @@ struct InsightCardView: View {
 						Text("\(self.insight.healthType.rawValue)")
 							.font(.headline.bold())
 						if let details = self.insight.details {
-							Text("\(details)")
+							Text(details)
 								.font(.caption)
 								.fontWeight(.medium)
 						}
@@ -64,13 +64,13 @@ struct InsightCardView: View {
 						.foregroundColor(self.foregroundColor)
 				}
 				
-				if let line = self.insight.results?.line {
-					Divider()
-					
-					LineChartView(line: line)
-						.chartStyle(LineChartStyle(showLabels: true))
-						.frame(height: 125)
-				}
+//				if let line = self.insight.results?.line {
+//					Divider()
+//					
+//					LineChartView(line: line)
+//						.chartStyle(LineChartStyle(showLabels: true))
+//						.frame(height: 125)
+//				}
 				
 //				Divider()
 //

@@ -7,24 +7,25 @@
 
 import Foundation
 import HealthKit
+import SwiftUI
 
 extension HealthManager.Insight {
 	mutating func generateDetails() {
 		self.details = self.produceDetails()
 	}
 	
-	func produceDetails() -> String? {
+	func produceDetails() -> LocalizedStringKey? {
 		let type = self.healthType
 		let insight = self.type
 		guard let results = self.results else {
-			return "No insight could be generated at this moment."
+			return "INSIGHT_ERROR_TEXT"
 		}
 		
 		if results.results == .undetermined {
-			return "No insight could be generated at this moment."
+			return "INSIGHT_ERROR_TEXT"
 		} else if results.results == .insignificant {
 			// May wanna include this as a static metric
-			return "The insights generated didn't make much sense or didn't show any large differences."
+			return "INSIGHT_INSIGNIFICANT_TEXT"
 		}
 		
 		let df = DateFormatter()
@@ -39,9 +40,9 @@ extension HealthManager.Insight {
 		if type == .rhr {
 			if insight == .twoWeekComparison { // Compare past 7 days with previous 7 days
 				if results.change == .up {
-					return "Your average resting heart rate were higher during the past week compared to the week before. Make sure to breathe, maintain a good diet, and recover well from workouts."
+					return "INSIGHT_RHR_TWOWEEKCOMPARISON_UP"
 				} else if results.change == .down {
-					return "Your daily average resting heart rate decreased during the past seven days compared to the week before! Great job. Make sure you keep this up."
+					return "INSIGHT_RHR_TWOWEEKCOMPARISON_DOWN"
 				}
 			} else if insight == .weekdayComparison { // Compares yesterday's average with the previous four week's weekday averages
 				df.setLocalizedDateFormatFromTemplate("EEEE")
@@ -54,9 +55,9 @@ extension HealthManager.Insight {
 				}
 			} else if insight == .weekendWeekComparison { // Compares weekend's average with previous five weekday's average
 				if results.change == .up {
-					return "During the past weekend your average resting heart rate were significantly higher compared to the weekdays before that. An elevated resting heart rate may be caused by stress and meditation may help lowering it."
+					return "INSIGHT_RHR_WEEKENDWEEKCOMPARISON_UP"
 				} else if results.change == .down {
-					return "Your RHR were lower this weekend compared to the weekdays before it. Well done on taking time out and getting enough rest!"
+					return "INSIGHT_RHR_WEEKENDWEEKCOMPARISON_DOWN"
 				}
 			}
 			// Heart Rate Variability
@@ -97,8 +98,13 @@ extension HealthManager.Insight {
 					return "The past 28 days saw a decrease in body fat compared to the previous month. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet."
 				}
 			}
+		} else if type == .distance {
+			
+		} else if type == .steps {
+			
+		} else if type == .stairs {
+			
 		}
-		
 		
 		return nil
 	}

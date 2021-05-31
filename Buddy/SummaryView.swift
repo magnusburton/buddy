@@ -146,11 +146,11 @@ struct SummaryView: View {
 			.navigationTitle("Hi \(userData.firstName ?? "there")!")
 			.toolbar {
 				Button(action: {
-					self.showProfile.toggle()
+					self.showProfile = true
 				}) {
 					Image(systemName: "person.crop.circle")
 						.font(.title)
-				}.sheet(isPresented: $showProfile) {
+				}.sheet(isPresented: self.$showProfile) {
 					ProfileView(isPresented: self.$showProfile)
 						.environmentObject(userData)
 				}

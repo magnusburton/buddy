@@ -46,3 +46,12 @@
 "Workouts" = "Workouts";
 "No data found." = "No data found.";
 "Make sure you've granted Buddy permission\nto read your recent workouts." = "Make sure you've granted Buddy permission\nto read your recent workouts.";
+
+/// INSIGHTS
+"INSIGHT_ERROR_TEXT" = "No insight could be generated at this moment.";
+"INSIGHT_INSIGNIFICANT_TEXT" = "The insights generated didn't make much sense or didn't show any large differences.";
+
+"INSIGHT_RHR_TWOWEEKCOMPARISON_UP" = "Your average resting heart rate were higher during the past week compared to the week before. Make sure to breathe, maintain a good diet, and recover well from workouts.";
+"INSIGHT_RHR_TWOWEEKCOMPARISON_DOWN" = "Your daily average resting heart rate decreased during the past seven days compared to the week before! Great job. Make sure you keep this up.";
+"INSIGHT_RHR_WEEKENDWEEKCOMPARISON_UP" = "During the past weekend your average resting heart rate were significantly higher compared to the weekdays before that. An elevated resting heart rate may be caused by stress and meditation may help lowering it.";
+"INSIGHT_RHR_WEEKENDWEEKCOMPARISON_DOWN" = "Your RHR were lower this weekend compared to the weekdays before it. Well done on taking time out and getting enough rest!";

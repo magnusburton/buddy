@@ -16,6 +16,9 @@ class HealthManager: ObservableObject {
 		case hrv = "Heart Rate Variability"
 		case rhr = "Resting Heart Rate"
 		case bodyFat = "Body fat"
+		case distance = "Distance walking and running"
+		case steps = "Steps"
+		case stairs = "Floors"
 	}
 	
 	struct HealthData {
@@ -52,6 +55,12 @@ class HealthManager: ObservableObject {
 		data[.rhr] = .init(dataType: .rhr, unit: HKUnit.count().unitDivided(by: .minute()), identifier: .restingHeartRate, type: HKQuantityType.quantityType(forIdentifier: .restingHeartRate)!, desiredSlope: .down, threshold: 0.1)
 		
 		data[.bodyFat] = .init(dataType: .bodyFat, unit: HKUnit.percent(), identifier: .bodyFatPercentage, type: HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!, multiplier: 100, desiredSlope: .down, threshold: 0.01)
+		
+		data[.distance] = .init(dataType: .distance, unit: HKUnit.meter(), identifier: .distanceWalkingRunning, type: HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!, multiplier: 1, desiredSlope: .up, threshold: 0.1)
+		
+		data[.steps] = .init(dataType: .steps, unit: HKUnit.count(), identifier: .stepCount, type: HKQuantityType.quantityType(forIdentifier: .stepCount)!, multiplier: 1, desiredSlope: .up, threshold: 0.1)
+		
+		data[.stairs] = .init(dataType: .stairs, unit: HKUnit.count(), identifier: .flightsClimbed, type: HKQuantityType.quantityType(forIdentifier: .flightsClimbed)!, multiplier: 1, desiredSlope: .up, threshold: 0.1)
 	}
 	
 	func fetchBaseline(for identifier: HKQuantityTypeIdentifier, completion: @escaping (Bool?, Error?) -> Void) {
@@ -90,7 +99,7 @@ extension HealthManager {
 			}
 			
 			if enumType == nil {
-				debugPrint("Health type ", type, " not assigned a data store in HealthManager yet.")
+				debugPrint("*** Health type ", type, " not assigned a data store in HealthManager yet. ***")
 				break;
 			}
 			
@@ -151,7 +160,7 @@ extension HealthManager {
 			
 			let query = HKObserverQuery(sampleType: sampleType, predicate: predicate) { [weak self] (query: HKObserverQuery, completionHandler: HKObserverQueryCompletionHandler, error: Error?) in
 				
-				debugPrint("observer query update handler called for type \(type), error: \(String(describing: error))")
+				debugPrint("*** observer query update handler called for type \(type), error: \(String(describing: error)) ***")
 				guard let strongSelf = self else { return }
 				
 				strongSelf.queryForUpdates(type: type)
@@ -160,7 +169,7 @@ extension HealthManager {
 			
 			HKManager.healthStore.execute(query)
 			HKManager.healthStore.enableBackgroundDelivery(for: type, frequency: .immediate) { (success: Bool, error: Error?) in
-				debugPrint("enableBackgroundDeliveryForType handler called for \(type) - success: \(success), error: \(String(describing: error))")
+				debugPrint("*** enableBackgroundDeliveryForType handler called for \(type) - success: \(success), error: \(String(describing: error)) ***")
 			}
 		}
 	}
@@ -178,6 +187,15 @@ extension HealthManager {
 				readHealthKitData(for: type)
 			case HKSampleType.quantityType(forIdentifier: .bodyFatPercentage)!:
 				debugPrint("bodyFatPercentage")
+				readHealthKitData(for: type)
+			case HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning)!:
+				debugPrint("distanceWalkingRunning")
+				readHealthKitData(for: type)
+			case HKSampleType.quantityType(forIdentifier: .stepCount)!:
+				debugPrint("stepCount")
+				readHealthKitData(for: type)
+			case HKSampleType.quantityType(forIdentifier: .flightsClimbed)!:
+				debugPrint("flightsClimbed")
 				readHealthKitData(for: type)
 			default: debugPrint("Unhandled HKObjectType: \(type)")
 		}
