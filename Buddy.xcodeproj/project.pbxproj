@@ -789,7 +789,7 @@
 				DEVELOPMENT_TEAM = 8APFUFV53Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Buddy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -813,7 +813,7 @@
 				DEVELOPMENT_TEAM = 8APFUFV53Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Buddy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
