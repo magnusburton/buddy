@@ -115,6 +115,7 @@ extension HealthManager {
 
 		let calendar = Calendar.current
 		let now = Date()
+		let dateFormatter = ISO8601DateFormatter()
 		
 		let unit = healthType.unit
 		let threshold = healthType.threshold
@@ -210,7 +211,7 @@ extension HealthManager {
 			let averageWeekend = pastWeekend.average(unit: unit)
 			let averageWeek = pastWeek.average(unit: unit)
 
-			let ratio = averageWeek / averageWeekend
+			let ratio = averageWeekend / averageWeek
 
 			let thresholdMinimum = 1 - threshold
 			let thresholdMaximum = 1 + threshold
@@ -345,6 +346,53 @@ extension HealthManager {
 					"secondPeriodAvg": secondPeriodAvg,
 					"ratio": ratio,
 					"threshold": threshold
+				]))
+			}
+		} else if insight == .topDayOfWeek {
+			guard let yesterday = calendar.date(byAdding: .day, value: -1, to: now) else {
+				completion(.init(results: .undetermined))
+				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
+			}
+			let endPeriod = yesterday.endOfDay
+			
+			guard let sevenDaysAgo = calendar.date(byAdding: .day, value: -6, to: yesterday) else {
+				completion(.init(results: .undetermined))
+				fatalError("*** Couldn't generate date for \(insight) insight of \(type) ***")
+			}
+			let startPeriod = sevenDaysAgo.startOfDay
+			
+			let period = DateInterval(start: startPeriod, end: endPeriod)
+			let periodItems = items.filter { period.contains($0.endDate) }
+			
+			let dailyAverage = periodItems.average(by: [.day, .month, .year], type: sampleType, unit: unit)
+			let weekAverage = dailyAverage.average(unit: unit)
+			
+			let max = dailyAverage.max { a, b in a.quantity.doubleValue(for: unit) < b.quantity.doubleValue(for: unit) }
+			let maxValue = max?.quantity.doubleValue(for: unit) ?? weekAverage
+			
+			let ratio = maxValue / weekAverage
+			
+			let thresholdMinimum = 1 - threshold
+			let thresholdMaximum = 1 + threshold
+			
+			if ratio >= thresholdMaximum || ratio <= thresholdMinimum {
+				let points: [Point] = dailyAverage.map { Point(sample: $0, unit: unit) }
+				let line = Line(points: points, label: label)
+				
+				completion(.init(results: .significant, change: ratio > 1 ? .up : .down, line: line, metadata: [
+					"maxValue": maxValue,
+					"weekAverage": weekAverage,
+					"ratio": ratio,
+					"threshold": threshold,
+					"significantDate": dateFormatter.string(from: max?.endDate ?? Date())
+				]))
+			} else {
+				completion(.init(results: .insignificant, change: ratio > 1 ? .up : .down, metadata: [
+					"maxValue": maxValue,
+					"weekAverage": weekAverage,
+					"ratio": ratio,
+					"threshold": threshold,
+					"significantDate": dateFormatter.string(from: max?.endDate ?? Date())
 				]))
 			}
 		}
