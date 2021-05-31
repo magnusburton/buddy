@@ -73,29 +73,29 @@ extension HealthManager.Insight {
 				}
 			} else if insight == .weekendWeekComparison { // Compares weekend's average with previous five weekday's average
 				if results.change == .up {
-					return "During the past weekend your average heart rate variability were significantly higher compared to the weekdays before that. This is great because a high heart rate variability is a show of good rest and recovery from workouts, low stress, good diet, and more."
+					return "INSIGHT_HRV_WEEKENDWEEKCOMPARISON_UP"
 				} else if results.change == .down {
-					return "Make sure to rest during the weekend and recover from your workouts. This will help increasing your heart rate variability. Your average HRV were down during the past weekend compared to the weekdays preceding it."
+					return "INSIGHT_HRV_WEEKENDWEEKCOMPARISON_DOWN"
 				}
 			} else if insight == .twoWeekComparison { // Compare past 7 days with previous 7 days
 				if results.change == .up {
-					return "Your seven day-average were higher than the week before."
+					return "INSIGHT_HRV_TWOWEEKCOMPARISON_UP"
 				} else if results.change == .down {
-					return "Make sure to recover after your workouts and get enough sleep. Your average HRV decreased during the past seven days compared to the week before."
+					return "INSIGHT_HRV_TWOWEEKCOMPARISON_DOWN"
 				}
 			}
 		} else if type == .bodyFat {
 			if insight == .twoWeekComparison { // Compare past 7 days with previous 7 days
 				if results.change == .up {
-					return "Your average body fat percent increased during the past week compared to the week before. Make sure to get a good healthy diet, exercise, get your steps in, and avoid alcohol."
+					return "INSIGHT_BODYFAT_TWOWEEKCOMPARISON_UP"
 				} else if results.change == .down {
-					return "The past seven days saw a decrease in body fat compared to the previous seven days. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet."
+					return "INSIGHT_BODYFAT_TWOWEEKCOMPARISON_DOWN"
 				}
 			} else if insight == .twoMonthComparison { // Compare past 28 days with previous 28 days
 				if results.change == .up {
-					return "Your average body fat percent increased significantly during the past month compared to the month before. Make sure to get a good healthy diet, exercise, get your steps in, and avoid alcohol."
+					return "INSIGHT_BODYFAT_TWOMONTHCOMPARISON_UP"
 				} else if results.change == .down {
-					return "The past 28 days saw a decrease in body fat compared to the previous month. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet."
+					return "INSIGHT_BODYFAT_TWOMONTHCOMPARISON_DOWN"
 				}
 			}
 		} else if type == .distance {

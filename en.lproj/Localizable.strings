@@ -55,3 +55,13 @@
 "INSIGHT_RHR_TWOWEEKCOMPARISON_DOWN" = "Your daily average resting heart rate decreased during the past seven days compared to the week before! Great job. Make sure you keep this up.";
 "INSIGHT_RHR_WEEKENDWEEKCOMPARISON_UP" = "During the past weekend your average resting heart rate were significantly higher compared to the weekdays before that. An elevated resting heart rate may be caused by stress and meditation may help lowering it.";
 "INSIGHT_RHR_WEEKENDWEEKCOMPARISON_DOWN" = "Your RHR were lower this weekend compared to the weekdays before it. Well done on taking time out and getting enough rest!";
+
+"INSIGHT_HRV_WEEKENDWEEKCOMPARISON_UP" = "During the past weekend your average heart rate variability were significantly higher compared to the weekdays before that. This is great because a high heart rate variability is a show of good rest and recovery from workouts, low stress, good diet, and more.";
+"INSIGHT_HRV_WEEKENDWEEKCOMPARISON_DOWN" = "Make sure to rest during the weekend and recover from your workouts. This will help increasing your heart rate variability. Your average HRV were down during the past weekend compared to the weekdays preceding it.";
+"INSIGHT_HRV_TWOWEEKCOMPARISON_UP" = "Your seven day-average were higher than the week before.";
+"INSIGHT_HRV_TWOWEEKCOMPARISON_DOWN" = "Make sure to recover after your workouts and get enough sleep. Your average HRV decreased during the past seven days compared to the week before.";
+
+"INSIGHT_BODYFAT_TWOWEEKCOMPARISON_UP" = "Your average body fat percent increased during the past week compared to the week before. Make sure to get a good healthy diet, exercise, get your steps in, and avoid alcohol.";
+"INSIGHT_BODYFAT_TWOWEEKCOMPARISON_DOWN" = "The past seven days saw a decrease in body fat compared to the previous seven days. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet.";
+"INSIGHT_BODYFAT_TWOMONTHCOMPARISON_UP" = "Your average body fat percent increased significantly during the past month compared to the month before. Make sure to get a good healthy diet, exercise, get your steps in, and avoid alcohol.";
+"INSIGHT_BODYFAT_TWOMONTHCOMPARISON_DOWN" = "The past 28 days saw a decrease in body fat compared to the previous month. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet.";

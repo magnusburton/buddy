@@ -55,3 +55,8 @@
 "INSIGHT_RHR_TWOWEEKCOMPARISON_DOWN" = "Under de senaste sju dagarna sjönk din vilopuls i snitt jämfört med veckan innan. Snyggt!";
 "INSIGHT_RHR_WEEKENDWEEKCOMPARISON_UP" = "Under helgen hade du en högre vilopuls än under veckodagarna innan. En förhöjd vilopuls kan bero på stress eller alkohol och meditation kan hjälpa dig att få en lägre vilopuls.";
 "INSIGHT_RHR_WEEKENDWEEKCOMPARISON_DOWN" = "Vilopulsen var i snitt under helgen lägre än under veckodagarna. Bra jobbat!";
+
+"INSIGHT_HRV_WEEKENDWEEKCOMPARISON_UP" = "Under den senaste helgen var din hjärtvariabilitet i snitt högre än veckodagarna samma vecka.";
+"INSIGHT_HRV_WEEKENDWEEKCOMPARISON_DOWN" = "Se till att få tillräckligt med sömn och vila under helgen. Detta kommer hjälpa dig höja din hjärtvariabilitet som under helgen sjönk jämfört med under veckan.";
+"INSIGHT_HRV_TWOWEEKCOMPARISON_UP" = "Under de senaste sju dagarna var ditt snitt högre än veckan innan.";
+"INSIGHT_HRV_TWOWEEKCOMPARISON_DOWN" = "Var noga med att återhämta dig efter träningspass och få bra med sömn. Din hjärtvariabilitet sjönk under den senaste veckan jämfört med veckan före.";
