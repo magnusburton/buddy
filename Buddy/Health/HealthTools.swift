@@ -9,10 +9,36 @@ import Foundation
 import HealthKit
 
 struct HealthTools {
+	enum MaxHRAlgorithm: Int {
+		case nes = 0, tanaka, oakland, haskell, robergs, wohlfart
+	}
 	
-	// https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/exercise-intensity/art-20046887
-	static func getMaxHR(age: Int) -> Double {
-		return Double(220 - age)
+	static func getMaxHR(from age: Int, using formula: MaxHRAlgorithm, gender: HKBiologicalSex? = .notSet) -> Double {
+		let age = Double(age)
+		
+		switch formula {
+			case .nes:
+				return 211 - (0.64 * age)
+			case .tanaka:
+				return 208 - (0.7 * age)
+			case .oakland:
+				return 192 - (0.007 * age * age)
+			case .haskell:
+				return 220 - age
+			case .robergs:
+				return 205.8 - (0.685 * age)
+			case .wohlfart:
+				switch gender {
+					case .female:
+						return 190.2 / (1 + exp(0.0453 * (age - 107.5)))
+					case .male:
+						return 203.7 / (1 + exp(0.033 * (age - 104.3)))
+					default:
+						return 220
+				}
+			default:
+				return 220
+		}
 	}
 	
 	// https://www.verywellfit.com/resting-heart-rate-3432632
@@ -26,10 +52,10 @@ struct HealthTools {
 		case Athlete
 	}
 	
-	static func getFitnessLevel(age: Int, gender: Int, rhr: Int) -> FitnessLevels {
+	static func getFitnessLevel(age: Int, gender: HKBiologicalSex, rhr: Int) -> FitnessLevels {
 		var rhrLimits: Array<Int>
 		
-		if gender == HKBiologicalSex.male.rawValue {
+		if gender == .male {
 			switch age {
 				case 0...17:
 					return FitnessLevels.Undetermined
@@ -46,7 +72,7 @@ struct HealthTools {
 				default:
 					rhrLimits = [55, 61, 65, 80]
 			}
-		} else if gender == HKBiologicalSex.female.rawValue {
+		} else if gender == .female {
 			switch age {
 				case 0...17:
 					return FitnessLevels.Undetermined
@@ -178,14 +204,15 @@ struct HealthTools {
 		var formattedSplits: [WorkoutDistanceSplit] = []
 		let slowest = splits.max()
 		let fastest = splits.min()
+		let splitsCount = splits.count
 		
 		for (index, split) in splits.enumerated() {
 			let splitData = WorkoutDistanceSplit(
 				sample: HKQuantity(unit: HKUnit.second().unitDivided(by: unit), doubleValue: split),
 				distanceUnit: unit,
 				distance: distance[index],
-				fastest: split == fastest,
-				slowest: split == slowest)
+				fastest: split == fastest && splitsCount > 1,
+				slowest: split == slowest && splitsCount > 2)
 			formattedSplits.append(splitData)
 		}
 		

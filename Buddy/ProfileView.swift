@@ -17,6 +17,7 @@ struct ProfileView: View {
 	@State private var customMaxHR = false
 	@State private var maxHR = 200
 	@State private var isAgeSupportPresented = false
+	@State private var isHRSheetPresented = false
 	
 	let hrStep = 1
 	let hrRange = 150...210
@@ -28,31 +29,31 @@ struct ProfileView: View {
 					HStack {
 						Image(systemName: "person.crop.circle")
 							.font(.largeTitle)
-							.foregroundColor(.gray)
+							.foregroundColor(.secondary)
 						
 						VStack(alignment: .leading) {
 							if let firstName = userData.firstName {
-								Text(firstName)
+								Text("profile.name \(firstName)")
 							} else {
 								Button(action: {
 									// Open sheet with information why all permissions are required.
 								}) {
 									HStack(spacing: Constants.spacing) {
-										Text("No name set")
+										Text("profile.noname")
 										Image(systemName: "questionmark.circle")
 									}
 								}
 							}
 							
 							if let age = healthKitManager.dateOfBirth?.age {
-								Text("\(age) years old")
+								Text("profile.age \(age)")
 									.font(.footnote)
 							} else {
 								Button {
 									isAgeSupportPresented = true
 								} label: {
 									HStack(spacing: Constants.spacing) {
-										Text("No age available")
+										Text("profile.noset")
 										Image(systemName: "questionmark.circle")
 									}
 									.font(.footnote)
@@ -73,16 +74,31 @@ struct ProfileView: View {
 				}
 				
 				Section(header: Text("Heart Rate Zones")) {
-					HStack {
-						Text("Max HR")
-						Spacer()
-						HStack(alignment: .lastTextBaseline, spacing: Constants.spacing) {
-							Text("196")
-								.bold()
-							Text("bpm")
-								.font(.caption)
-						}
-					}
+					NavigationLink(
+						destination: MaxHeartRateAlgorithmView().environmentObject(healthKitManager),
+						label: {
+							HStack {
+								Text("Max HR")
+								Spacer()
+								HStack(alignment: .lastTextBaseline, spacing: Constants.spacing) {
+									if let customMaxHR = userData.customMaxHR {
+										Text("\(customMaxHR, specifier: "%.1f")")
+											.bold()
+									} else {
+										if let age = healthKitManager.dateOfBirth?.age {
+											Text("\(HealthTools.getMaxHR(from: age, using: userData.maxHRAlgorithm, gender: healthKitManager.biologicalSex), specifier: "%.1f")")
+												.bold()
+										} else {
+											Text("220")
+												.bold()
+										}
+									}
+									Text("bpm")
+										.font(.caption)
+										.foregroundColor(.secondary)
+								}
+							}
+						})
 					Toggle(isOn: $userData.showHRZoneDetails, label: {
 						Text("Show expanded workout data")
 					})
