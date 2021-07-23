@@ -19,28 +19,35 @@ public struct Line: View {
 	public var curvedLine: Bool = false
 	public var multiplier: Double = 1
 	public var showPoints: Bool = false
+	public var pointsOnly: Bool = false
+	
 	public var isTimeline: Bool = false
 	
-	public var pathStyle: StrokeStyle = StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round)
+	static var dotDimension: CGFloat = 3.0
+	static var dotCornerSize: CGSize {
+		CGSize(width: Line.dotDimension, height: dotDimension)
+	}
+	public var pathStyle: StrokeStyle = StrokeStyle(lineWidth: 2.4, lineCap: .round, lineJoin: .round)
 	public let path: Path
 	
 	private var style: LineChartStyle {
 		(chartStyle as? LineChartStyle) ?? .init()
 	}
 	
-	init(points: [Point], label: String, color: Color = .accentColor, curvedLine: Bool = false, multiplier: Double = 1, showPoints: Bool = false) {
+	init(points: [Point], label: String, color: Color = .accentColor, curvedLine: Bool = false, multiplier: Double = 1, showPoints: Bool = false, pointsOnly: Bool = false) {
 		self.points = points
 		self.label = label
 		self.color = color
 		self.curvedLine = curvedLine
 		self.multiplier = multiplier
 		self.showPoints = showPoints
+		self.pointsOnly = pointsOnly
 		
 		if let first = points.first, first.date != nil {
 			self.isTimeline = true
 		}
 		
-		self.path = Line.makePath(points: points, curvedLine: false)
+		self.path = Line.makePath(points: points, curvedLine: curvedLine, pointsOnly: pointsOnly)
 	}
 	
 	private var minYValue: CGFloat {
@@ -117,7 +124,7 @@ public struct Line: View {
 		return points.map { $0.x }
 	}
 	
-	static func makePath(points: [Point], curvedLine: Bool) -> Path {
+	static func makePath(points: [Point], curvedLine: Bool, pointsOnly: Bool) -> Path {
 		var path = Path()
 		if (points.count < 2){
 			return path
@@ -162,8 +169,8 @@ public struct Line: View {
 		let height: CGFloat = 1
 		let width: CGFloat = 1
 		
-		//				let stepX = points.min { a, b in a.x < b.x }?.x ?? 0
-		//				let stepY = points.min { a, b in a.y < b.y }?.y ?? 0
+//		let stepX = points.min { a, b in a.x < b.x }?.x ?? 0
+//		let stepY = points.min { a, b in a.y < b.y }?.y ?? 0
 		let step = Point(x: Double(width) / Double(diffXValue), y: Double(height) / Double(diffYValue))
 		
 		let initialPoint: Point = points.first!
@@ -171,7 +178,12 @@ public struct Line: View {
 		let initialX: Double = initialPoint.x * step.x - Double(width * minXValue / diffXValue)
 		let initialY: Double = initialPoint.y * step.y - Double(height * minYValue / diffYValue)
 		
-		path.move(to: Point(x: initialX, y: initialY).asCGPoint)
+		if pointsOnly {
+			let rect = CGRect(x: CGFloat(initialX), y: CGFloat(initialY), width: Line.dotDimension, height: Line.dotDimension)
+			path.addRoundedRect(in: rect, cornerSize: Line.dotCornerSize)
+		} else {
+			path.move(to: Point(x: initialX, y: initialY).asCGPoint)
+		}
 		
 		for pointIndex in 1..<points.count {
 			let point = points[pointIndex]
@@ -179,9 +191,14 @@ public struct Line: View {
 			let x: Double = point.x * step.x - Double(width * minXValue / diffXValue)
 			let y: Double = point.y * step.y - Double(height * minYValue / diffYValue)
 			
-			path.addLine(to: Point(x: x, y: y).asCGPoint)
+			if pointsOnly {
+				let rect = CGRect(x: CGFloat(x), y: CGFloat(y), width: dotDimension, height: dotDimension)
+				dump(rect)
+				path.addRoundedRect(in: rect, cornerSize: dotCornerSize)
+			} else {
+				path.addLine(to: Point(x: x, y: y).asCGPoint)
+			}
 		}
-		
 		return path
 	}
 	
@@ -196,16 +213,21 @@ public struct Line: View {
 				let height = geometry.size.height
 				let width = geometry.size.width
 
-				//				let stepX = points.min { a, b in a.x < b.x }?.x ?? 0
-				//				let stepY = points.min { a, b in a.y < b.y }?.y ?? 0
+//				let stepX = points.min { a, b in a.x < b.x }?.x ?? 0
+//				let stepY = points.min { a, b in a.y < b.y }?.y ?? 0
 				let step = Point(x: Double(width) / Double(self.diffXValue), y: Double(height) / Double(self.diffYValue))
 
 				let initialPoint: Point = self.points.first!
 
 				let initialX: Double = initialPoint.x * step.x - Double(width * self.minXValue / self.diffXValue)
 				let initialY: Double = Double(height) - (initialPoint.y * step.y - Double(height * self.minYValue / self.diffYValue))
-
-				path.move(to: Point(x: initialX, y: initialY).asCGPoint)
+				
+				if pointsOnly {
+					let rect = CGRect(x: CGFloat(initialX), y: CGFloat(initialX), width: Line.dotDimension, height: Line.dotDimension)
+					path.addRoundedRect(in: rect, cornerSize: Line.dotCornerSize)
+				} else {
+					path.move(to: Point(x: initialX, y: initialY).asCGPoint)
+				}
 
 				for pointIndex in 1..<points.count {
 					let point = self.points[pointIndex]
@@ -213,7 +235,12 @@ public struct Line: View {
 					let x: Double = point.x * step.x - Double(width * self.minXValue / self.diffXValue)
 					let y: Double = Double(height) - (point.y * step.y - Double(height * self.minYValue / self.diffYValue))
 
-					path.addLine(to: Point(x: x, y: y).asCGPoint)
+					if pointsOnly {
+						let rect = CGRect(x: CGFloat(x), y: CGFloat(y), width: Line.dotDimension, height: Line.dotDimension)
+						path.addRoundedRect(in: rect, cornerSize: Line.dotCornerSize)
+					} else {
+						path.addLine(to: Point(x: x, y: y).asCGPoint)
+					}
 				}
 			}
 //			self.path
@@ -257,6 +284,7 @@ struct ChartLine_Previews: PreviewProvider {
 //			Line(points: data2, label: "Test", style: StrokeStyle(dash: [2.0]))
 			Line(points: data, label: "Test", color: Color.red)
 			Line(points: data, label: "Test", curvedLine: true)
+			Line(points: data, label: "Test", pointsOnly: true)
 		}
 		.frame(width: 300, height: 130)
 		.previewLayout(PreviewLayout.sizeThatFits)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 public protocol ChartStyle {
+	var showGrid: Bool { get }
 	var showLabels: Bool { get }
 	var showAxis: Bool { get }
 }

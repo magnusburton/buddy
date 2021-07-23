@@ -22,7 +22,7 @@ public struct Point {
 	/// Sample representing the point
 	public var sample: HKQuantitySample?
 	/// Default color for the point in not selected state
-	public var color: Color?
+	public var color: Color = .accentColor
 	/// Optional label for horizontal axis
 	public var label: String?
 	/// Convert to `CGPoint`

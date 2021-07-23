@@ -1,13 +1,13 @@
 //
-//  LineChartView.swift
+//  DotChartView.swift
 //  Buddy
 //
-//  Created by Magnus Burton on 2021-03-05.
+//  Created by Magnus Burton on 2021-07-14.
 //
 
 import SwiftUI
 
-struct LineChartView: View {
+struct DotChartView: View {
 	@Environment(\.chartStyle) var chartStyle
 	
 	var lines: [Line]
@@ -23,106 +23,89 @@ struct LineChartView: View {
 	@State private var showIndicator: Bool = false
 	@State private var touchLocation: CGPoint = .zero
 	
-	/// To be used for x-axis labels
-	let df = DateFormatter()
 	
-	var globalMin: Double {
-		return lines.min { a, b in a.min < b.min }?.min.y ?? .leastNonzeroMagnitude
+	var max: Double {
+		lines.max { a, b in a.max < b.max }?.max.y ?? .greatestFiniteMagnitude
+	}
+	var min: Double {
+		lines.min { a, b in a.min < b.min }?.min.y ?? .leastNonzeroMagnitude
 	}
 	
-	var globalMax: Double {
-		return lines.max { a, b in a.max < b.max }?.max.y ?? .leastNonzeroMagnitude
+	var first: Double {
+		lines.min { a, b in a.first.x < b.first.x }?.first.x ?? .leastNonzeroMagnitude
+	}
+	var last: Double {
+		lines.max { a, b in a.last.x < b.last.x }?.last.x ?? .greatestFiniteMagnitude
 	}
 	
 	func getClosestDataPoint(to point: CGPoint, width: CGFloat, height: CGFloat) -> CGPoint {
-		if self.lines.isEmpty {
-			return .zero
-		}
-		
+		var point = point
 		let rect = CGRect(x: 0, y: 0, width: width, height: height)
 		
 		if !rect.contains(point) {
-			return .zero
+			point = rect.getClosestPointOnEdge(to: point)
 		}
 		
 		return point
-		
-//		let step = Point(x: Double(width) / Double(self.diffXValue), y: Double(height) / Double(self.maxYValue))
-//
-//		let initialPoint: Point = self.points.first!
-//
-//		let initialX: Double = initialPoint.x * step.x - Double(width * self.minXValue / self.diffXValue)
-//		let initialY: Double = Double(height) - (initialPoint.y * step.y)
-//
-//		path.move(to: Point(x: initialX, y: initialY).asCGPoint)
-//
-//		for pointIndex in 1..<points.count {
-//			let point = self.points[pointIndex]
-//
-//			let x: Double = point.x * step.x - Double(width * self.minXValue / self.diffXValue)
-//			let y: Double = Double(height) - (point.y * step.y)
-//
-//			path.addLine(to: Point(x: x, y: y).asCGPoint)
-//		}
-//
-//
-//
-//		return .zero
 	}
 	
-	func renderAndAdjustScale(for line: Line, size: CGSize) -> some View {
-		let max = line.max
-		let min = line.min
-		let yInterval = max.y - min.y
-		
+	private var grid: Grid {
+		return Grid(lines: self.lines, xCount: style.gridCount)
+	}
+	
+	private var style: DotChartStyle {
+		(chartStyle as? DotChartStyle) ?? .init()
+	}
+	
+//	private var labels: [String] {
+//		let formatter = DateFormatter()
+//		let dateFormatter = style.dateFormatter
+//
+//		formatter.setLocalizedDateFormatFromTemplate(dateFormatter)
+//
+//		let allLabels: [String] = self.lines.points.map {
+//			if let date = $0.date {
+//				return formatter.string(from: date)
+//			}
+//			return String(format: "%.0f", $0.x)
+//		}
+//
+//		return [
+//			allLabels.first!,
+//			allLabels.last!
+//		]
+//	}
+	
+	private var labelCount: Int {
+		guard let labelCount = style.labelCount else {
+			return grid.xCount
+		}
+		return labelCount
+	}
+	
+	func renderAndAdjustScale(for point: Point, size: CGSize) -> some View {
 		let axisData = grid.axisData
+		
+		var scaleXInterval = axisData.xMax - axisData.xMin
+		if scaleXInterval.isZero {
+			scaleXInterval = .leastNonzeroMagnitude
+		}
 		
 		var scaleYInterval = axisData.yMax - axisData.yMin
 		if scaleYInterval.isZero {
 			scaleYInterval = .leastNonzeroMagnitude
 		}
 		
-		let xScale = 1 * size.width
-		let yScale = CGFloat(yInterval / scaleYInterval) * size.height
+		let xOffset = (point.x - axisData.xMin) / scaleXInterval
+		let yOffset = (axisData.yMax - point.y) / scaleYInterval
 		
-		let xOffset: Double = 0
-		let yOffset = (axisData.yMax - max.y) / scaleYInterval
-		
-		let path = line.path
-		
-		return path
-			.applying(CGAffineTransform(scaleX: xScale, y: -yScale))
-			.offset(x: CGFloat(xOffset), y: size.height-CGFloat(yOffset)*size.height)
-			.stroke(line.color, style: line.pathStyle)
-	}
-	
-	private var grid: Grid {
-		return Grid(lines: self.lines)
-	}
-	
-	private var style: LineChartStyle {
-		(chartStyle as? LineChartStyle) ?? .init()
-	}
-	
-	private var allLabels: [String] {
-		let formatter = DateFormatter()
-		let dateFormatter = style.dateFormatter
-		
-		formatter.setLocalizedDateFormatFromTemplate(dateFormatter)
-		
-		return self.lines.flatMap {
-			$0.points.compactMap {
-				if let date = $0.date {
-					return formatter.string(from: date)
-				}
-				return String(format: "%.0f", $0.x)
-			}
-		}
-	}
-	
-	private var threshold: Int {
-		let threshold = Double(allLabels.count) / Double(style.labelCount ?? allLabels.count)
-		return Int(threshold.rounded(.awayFromZero))
+		return Circle()
+			.frame(width: style.size, height: style.size, alignment: .center)
+			.background(point.color)
+			.cornerRadius(style.size/2, antialiased: false)
+			.position(
+				x: CGFloat(xOffset) * size.width,
+				y: CGFloat(yOffset) * size.height)
 	}
 	
 	var body: some View {
@@ -131,14 +114,11 @@ struct LineChartView: View {
 				GeometryReader { geometry in
 					ZStack {
 						ForEach(self.lines) { line in
-							renderAndAdjustScale(for: line, size: geometry.size)
+							ForEach(line.points) { point in
+								renderAndAdjustScale(for: point, size: geometry.size)
+							}
 						}
 						.background(grid)
-						
-						if showIndicator {
-							ChartIndicator()
-								.position(self.touchLocation)
-						}
 						
 						if style.showAxis {
 							HStack {
@@ -154,7 +134,7 @@ struct LineChartView: View {
 										.padding(.bottom, 0)
 								}
 								.font(.footnote)
-								.foregroundColor(.gray)
+								.foregroundColor(.secondary)
 								.padding(.trailing, 2)
 							}
 							.accessibilityHidden(true)
@@ -180,69 +160,93 @@ struct LineChartView: View {
 			
 			if style.showLabels {
 				HStack(spacing: 0) {
-					ForEach(allLabels.indexed(), id: \.1.self) { index, label in
-						if index % self.threshold == 0 && index != 0 {
-							Spacer()
-						}
-						if index % self.threshold == 0 {
-							Text(label)
-								.multilineTextAlignment(.center)
-								.foregroundColor(.gray)
-								.font(.footnote)
-						}
-					}
+//					ForEach(labels.indexed(), id: \.1.self) { index, label in
+//						if index != 0 {
+//							Spacer()
+//						}
+//						Text(label)
+//							.multilineTextAlignment(.center)
+//							.foregroundColor(.secondary)
+//							.font(.footnote)
+//					}
 				}
 				.padding([.top, .leading, .trailing], -6)
 				.font(.footnote)
-				.foregroundColor(.gray)
+				.foregroundColor(.secondary)
 				.accessibilityHidden(true)
 			}
 		}
 	}
 }
 
-/// Type that defines a line chart style.
-public struct LineChartStyle: ChartStyle {
+/// Type that defines a dot chart style.
+public struct DotChartStyle: ChartStyle {
 	/// Bool value that controls whenever to show grid. Default is `true`.
 	public let showGrid: Bool
 	/// Bool value that controls whenever to show y-axis labels. Default is `true`.
 	public let showAxis: Bool
 	/// Bool value that controls whenever to show x-axis labels. Default is `false`.
 	public let showLabels: Bool
-	/// How to format eventual timeline labels on x-axis. Default is `EEEEEE`.
+	/// How to format eventual timeline labels on x-axis. Default is `cccccc`.
 	public let dateFormatter: String
 	/// The count of labels that should be shown on x-axis. Default is `all`.
 	public let labelCount: Int?
 	/// If touch is enabled on the chart to see details values. Default is `false`.
 	public let enableTouch: Bool
+	/// Add horizontal line. Default is `.none`.
+	public let horizontalLine: CustomLineType?
+	/// Dot size.
+	public let size: CGFloat = 4.0
 	
-	/// Creates new line chart style.
-	public init(
+	/// Creates new dot chart style.
+	init(
 		showGrid: Bool = true,
 		showAxis: Bool = true,
 		showLabels: Bool = false,
-		dateFormatter: String = "EEEEEE",
+		dateFormatter: String = "cccccc",
 		labelCount: Int? = nil,
-		enableTouch: Bool = false
+		enableTouch: Bool = false,
+		horizontalLine: CustomLineType? = nil
 	) {
 		self.showGrid = showGrid
 		self.showAxis = showAxis
 		self.showLabels = showLabels
 		self.dateFormatter = dateFormatter
-		self.labelCount = labelCount
+		
+		if labelCount != nil && labelCount! < 2 {
+			self.labelCount = 2
+		} else {
+			self.labelCount = labelCount
+		}
+		
 		self.enableTouch = enableTouch
+		self.horizontalLine = horizontalLine
+	}
+	
+	public var gridCount: Int? {
+		if let count = self.labelCount {
+			return count - 1
+		}
+		return nil
+	}
+	
+	public enum CustomLineType {
+		case average
+		case max
+		case min
+		case custom(Double)
 	}
 }
 
-struct LineChartView_Previews: PreviewProvider {
+struct DotChartView_Previews: PreviewProvider {
 	static var previews: some View {
-		let data2: Line = Line(points: [
+		let data2 = Line(points: [
 			.init(x: 1, y: 2),
 			.init(x: 2, y: 0),
 			.init(x: 3, y: 3),
 			.init(x: 4, y: 4)
 		], label: "Test")
-		let dateData: Line = Line(points: [
+		let dateData = Line(points: [
 			.init(date: Date().addingTimeInterval(-3600*24*6), y: 5),
 			.init(date: Date().addingTimeInterval(-3600*24*5), y: 7),
 			.init(date: Date().addingTimeInterval(-3600*24*4), y: 7),
@@ -251,7 +255,7 @@ struct LineChartView_Previews: PreviewProvider {
 			.init(date: Date().addingTimeInterval(-3600*24*1), y: 8),
 			.init(date: Date().addingTimeInterval(-3600*24*0), y: 4)
 		], label: "Test")
-		let data: Line = Line(points: [
+		let data = Line(points: [
 			.init(x: 1, y: 8),
 			.init(x: 2, y: 2),
 			.init(x: 3, y: 6),
@@ -261,7 +265,7 @@ struct LineChartView_Previews: PreviewProvider {
 			.init(x: 7, y: 15),
 			.init(x: 8, y: 6)
 		], label: "Test", color: .red)
-		let data3: Line = Line(points: [
+		let data3 = Line(points: [
 			.init(x: 0, y: 9),
 			.init(x: 1, y: 8),
 			.init(x: 2, y: 2),
@@ -395,15 +399,18 @@ struct LineChartView_Previews: PreviewProvider {
 		], label: "Big data")
 		
 		Group {
-			LineChartView(line: data3)
-			LineChartView(line: data2)
-				.chartStyle(LineChartStyle(showGrid: false, showAxis: true, showLabels: false))
-			LineChartView(line: dateData)
-				.chartStyle(LineChartStyle(showLabels: true))
-			LineChartView(line: data)
-				.chartStyle(LineChartStyle(showLabels: true))
-//			LineChartView(lines: [data, data2])
-//			LineChartView(line: data, options: .init(showGrid: false, showAxisLabels: true))
+			DotChartView(line: data3)
+			DotChartView(line: data2)
+				.chartStyle(DotChartStyle(showGrid: false, showAxis: true, showLabels: false))
+			DotChartView(line: dateData)
+				.chartStyle(DotChartStyle(showLabels: true, horizontalLine: .average))
+			DotChartView(line: dateData)
+				.chartStyle(DotChartStyle(showLabels: true, labelCount: 3))
+			DotChartView(line: data)
+				.chartStyle(DotChartStyle(showLabels: true))
+			//			LineChartView(lines: [data, data2])
+			DotChartView(line: data)
+				.chartStyle(DotChartStyle(showLabels: true, enableTouch: true))
 		}
 		.frame(width: 300, height: 150)
 		.previewLayout(PreviewLayout.sizeThatFits)

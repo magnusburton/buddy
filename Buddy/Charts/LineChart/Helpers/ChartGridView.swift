@@ -29,7 +29,7 @@ public struct Grid: View {
 		self.yCount = y
 	}
 	
-	init(line: Line) {
+	init(line: Line, xCount: Int? = nil, yCount: Int? = nil) {
 		if line.count < 2 {
 			self.xCount = 0
 			self.yCount = 0
@@ -48,17 +48,27 @@ public struct Grid: View {
 		let xAxis = Grid.calculateAxis(min: first.x, max: last.x)
 		let yAxis = Grid.calculateAxis(min: min.y, max: max.y)
 		
-		self.xNiceMax = xAxis.max
-		self.xNiceMin = xAxis.min
+//		self.xNiceMax = xAxis.max
+//		self.xNiceMin = xAxis.min
+		self.xNiceMax = last.x
+		self.xNiceMin = first.x
 		
 		self.yNiceMax = yAxis.max
 		self.yNiceMin = yAxis.min
 		
-		self.xCount = xAxis.count
-		self.yCount = yAxis.count
+		if let strictXCount = xCount {
+			self.xCount = strictXCount
+		} else {
+			self.xCount = xAxis.count
+		}
+		if let strictYCount = yCount {
+			self.yCount = strictYCount
+		} else {
+			self.yCount = yAxis.count
+		}
 	}
 	
-	init(lines: [Line]) {
+	init(lines: [Line], xCount: Int? = nil, yCount: Int? = nil) {
 		if lines.count < 1 {
 			fatalError("Array must have at least one line.")
 		}
@@ -81,21 +91,31 @@ public struct Grid: View {
 		let min = lines.min { a, b in a.min < b.min }!.min
 		
 		let first = lines.min { a, b in a.first.x < b.first.x }!.first
-		let last = lines.min { a, b in a.last.x < b.last.x }!.last
+		let last = lines.max { a, b in a.last.x < b.last.x }!.last
 		
 		let xAxis = Grid.calculateAxis(min: first.x, max: last.x)
 		let yAxis = Grid.calculateAxis(min: min.y, max: max.y)
 		
 		self.yMultiplier = lines.first!.multiplier
 		
-		self.xNiceMax = xAxis.max
-		self.xNiceMin = xAxis.min
+//		self.xNiceMax = xAxis.max
+//		self.xNiceMin = xAxis.min
+		self.xNiceMax = last.x
+		self.xNiceMin = first.x
 		
 		self.yNiceMax = yAxis.max
 		self.yNiceMin = yAxis.min
 		
-		self.xCount = xAxis.count
-		self.yCount = yAxis.count
+		if let strictXCount = xCount {
+			self.xCount = strictXCount
+		} else {
+			self.xCount = xAxis.count
+		}
+		if let strictYCount = yCount {
+			self.yCount = strictYCount
+		} else {
+			self.yCount = yAxis.count
+		}
 	}
 	
 	struct AxisData {
@@ -123,7 +143,6 @@ public struct Grid: View {
 		if unroundedCount.isInfinite || unroundedCount.isNaN {
 			unroundedCount = 1
 		}
-		
 		let count = Int(unroundedCount) - 1
 		
 		return .init(range: range, spacing: tickSpacing, min: niceMin, max: niceMax, count: count)
