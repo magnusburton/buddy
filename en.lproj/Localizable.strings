@@ -11,6 +11,15 @@
 "Summary" = "Summary";
 "Workouts" = "Workouts";
 
+/// Health
+"Heart Rate Variability" = "Heart Rate Variability";
+"Resting Heart Rate" = "Resting Heart Rate";
+"Body Fat" = "Body Fat";
+"Distance walking and running" = "Running and walking distance";
+"Steps" = "Steps";
+"Floors" = "Floors";
+"Cadence" = "Cadence";
+
 /// Sheet views
 "Done" = "Done";
 "Save" = "Save";
@@ -18,19 +27,19 @@
 
 /// Summary view
 "Hi %@!" = "Hi %@!";
-"Insights" = "Insights";
-"Heart Rate Variability" = "Heart Rate Variability";
 
 /// Name card view
-"NAME-CARD-TITLE" = "Whats your name?";
-"NAME-CARD-DESCRIPTION" = "Since your health is a private, personal matter, why don't we get to know each other a little better?";
-"NAME-CARD-PLACEHOLDER" = "What may I call you?";
-"NAME-CARD-PRIVACY" = "This is optional and the information provided stays on your device.";
+"profile.name.card.title" = "What's your name?";
+"profile.name.card.description" = "Since your health is a private, personal matter, why don't we get to know each other a little better?";
+"profile.name.card.placeholder" = "What may I call you?";
+"profile.name.card.privacy" = "This is optional and the information provided stays on your device.";
 
 /// Profile view
 "Profile" = "Profile";
-"%f years old" = "%f years old";
-"No age available" = "No age available";
+"profile.name %lld" = "%lld";
+"profile.age %lld" = "%lld years old";
+"profile.noname" = "No name set";
+"profile.noage" = "No age available";
 "Max HR" = "Max HR";
 "bpm" = "bpm";
 
@@ -42,26 +51,68 @@
 "Heart Rate Zones" = "Heart Rate Zones";
 "Include walks" = "Include walks";
 
+/// Charts
+"chart.loading.text" = "Loading chart";
+
 /// Workout view
 "Workouts" = "Workouts";
 "No data found." = "No data found.";
 "Make sure you've granted Buddy permission\nto read your recent workouts." = "Make sure you've granted Buddy permission\nto read your recent workouts.";
 
 /// INSIGHTS
-"INSIGHT_ERROR_TEXT" = "No insight could be generated at this moment.";
-"INSIGHT_INSIGNIFICANT_TEXT" = "The insights generated didn't make much sense or didn't show any large differences.";
+"Insights" = "Insights";
+"insight.error.text" = "No insight could be generated at this moment.";
+"insight.insignificant.text" = "The insights generated didn't make much sense or didn't show any large differences.";
+"insight.loading.text" = "Loading insights";
 
-"INSIGHT_RHR_TWOWEEKCOMPARISON_UP" = "Your average resting heart rate were higher during the past week compared to the week before. Make sure to breathe, maintain a good diet, and recover well from workouts.";
-"INSIGHT_RHR_TWOWEEKCOMPARISON_DOWN" = "Your daily average resting heart rate decreased during the past seven days compared to the week before! Great job. Make sure you keep this up.";
-"INSIGHT_RHR_WEEKENDWEEKCOMPARISON_UP" = "During the past weekend your average resting heart rate were significantly higher compared to the weekdays before that. An elevated resting heart rate may be caused by stress and meditation may help lowering it.";
-"INSIGHT_RHR_WEEKENDWEEKCOMPARISON_DOWN" = "Your RHR were lower this weekend compared to the weekdays before it. Well done on taking time out and getting enough rest!";
+"insight.rhr.twoweekcomparison.up" = "Your average resting heart rate were higher during the past week compared to the week before. Make sure to breathe, maintain a good diet, and recover well from workouts.";
+"insight.rhr.twoweekcomparison.down" = "Your daily average resting heart rate decreased during the past seven days compared to the week before! Great job. Make sure you keep this up.";
+"insight.rhr.weekweekendcomparison.up" = "During the past weekend your average resting heart rate were significantly higher compared to the weekdays before that. An elevated resting heart rate may be caused by stress and meditation may help lowering it.";
+"insight.rhr.weekweekendcomparison.down" = "Your RHR were lower this weekend compared to the weekdays before it. Well done on taking time out and getting enough rest!";
+"insight.rhr.weekendweekcomparison.up" = "";
+"insight.rhr.weekendweekcomparison.down" = "";
 
-"INSIGHT_HRV_WEEKENDWEEKCOMPARISON_UP" = "During the past weekend your average heart rate variability were significantly higher compared to the weekdays before that. This is great because a high heart rate variability is a show of good rest and recovery from workouts, low stress, good diet, and more.";
-"INSIGHT_HRV_WEEKENDWEEKCOMPARISON_DOWN" = "Make sure to rest during the weekend and recover from your workouts. This will help increasing your heart rate variability. Your average HRV were down during the past weekend compared to the weekdays preceding it.";
-"INSIGHT_HRV_TWOWEEKCOMPARISON_UP" = "Your seven day-average were higher than the week before.";
-"INSIGHT_HRV_TWOWEEKCOMPARISON_DOWN" = "Make sure to recover after your workouts and get enough sleep. Your average HRV decreased during the past seven days compared to the week before.";
+"insight.hrv.weekweekendcomparison.up" = "During the past weekend your average heart rate variability were significantly higher compared to the weekdays before that. This is great because a high heart rate variability is a show of good rest and recovery from workouts, low stress, good diet, and more.";
+"insight.hrv.weekweekendcomparison.down" = "Make sure to rest during the weekend and recover from your workouts. This will help increasing your heart rate variability. Your average HRV were down during the past weekend compared to the weekdays preceding it.";
+"insight.hrv.twoweekcomparison.up" = "Your seven day-average were higher than the week before.";
+"insight.hrv.twoweekcomparison.down" = "Make sure to recover after your workouts and get enough sleep. Your average HRV decreased during the past seven days compared to the week before.";
+"insight.hrv.weekendweekcomparison.up" = "";
+"insight.hrv.weekendweekcomparison.down" = "";
 
-"INSIGHT_BODYFAT_TWOWEEKCOMPARISON_UP" = "Your average body fat percent increased during the past week compared to the week before. Make sure to get a good healthy diet, exercise, get your steps in, and avoid alcohol.";
-"INSIGHT_BODYFAT_TWOWEEKCOMPARISON_DOWN" = "The past seven days saw a decrease in body fat compared to the previous seven days. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet.";
-"INSIGHT_BODYFAT_TWOMONTHCOMPARISON_UP" = "Your average body fat percent increased significantly during the past month compared to the month before. Make sure to get a good healthy diet, exercise, get your steps in, and avoid alcohol.";
-"INSIGHT_BODYFAT_TWOMONTHCOMPARISON_DOWN" = "The past 28 days saw a decrease in body fat compared to the previous month. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet.";
+"insight.bodyfat.twoweekcomparison.up" = "Your average body fat percent increased during the past week compared to the week before. Make sure to get a good healthy diet, exercise, get your steps in, and avoid alcohol.";
+"insight.bodyfat.twoweekcomparison.down" = "The past seven days saw a decrease in body fat compared to the previous seven days. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet.";
+"insight.bodyfat.twomonthcomparison.up" = "Your average body fat percent increased significantly during the past month compared to the month before. Make sure to get a good healthy diet, exercise, get your steps in, and avoid alcohol.";
+"insight.bodyfat.twomonthcomparison.down" = "The past 28 days saw a decrease in body fat compared to the previous month. Well done on maintaining your diet, and exercising regularly! Keep this up by maintaining a good diet.";
+
+/*"insight.distance.twoweekcomparison.up" = "";
+"insight.distance.twoweekcomparison.down" = "";
+"insight.distance.twomonthcomparison.up" = "";
+"insight.distance.twomonthcomparison.down" = "";
+"insight.distance.weekdaycomparison.up" = "";
+"insight.distance.weekdaycomparison.down" = "";
+"insight.distance.weekendweekcomparison.up" = "";
+"insight.distance.weekendweekcomparison.down" = "";
+"insight.distance.topdayofweek.up" = "";
+"insight.distance.topdayofweek.down" = "";
+
+"insight.steps.twoweekcomparison.up" = "";
+"insight.steps.twoweekcomparison.down" = "";
+"insight.steps.twomonthcomparison.up" = "";
+"insight.steps.twomonthcomparison.down" = "";
+"insight.steps.weekdaycomparison.up" = "";
+"insight.steps.weekdaycomparison.down" = "";
+"insight.steps.weekendweekcomparison.up" = "";
+"insight.steps.weekendweekcomparison.down" = "";
+"insight.steps.topdayofweek.up" = "";
+"insight.steps.topdayofweek.down" = "";
+
+"insight.stairs.twoweekcomparison.up" = "";
+"insight.stairs.twoweekcomparison.down" = "";
+"insight.stairs.twomonthcomparison.up" = "";
+"insight.stairs.twomonthcomparison.down" = "";
+"insight.stairs.weekdaycomparison.up" = "";
+"insight.stairs.weekdaycomparison.down" = "";
+"insight.stairs.weekendweekcomparison.up" = "";
+"insight.stairs.weekendweekcomparison.down" = "";
+"insight.stairs.topdayofweek.up" = "";
+"insight.stairs.topdayofweek.down" = "";*/

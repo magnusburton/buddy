@@ -11,6 +11,15 @@
 "Summary" = "Översikt";
 "Workouts" = "Träning";
 
+/// Health
+"Heart Rate Variability" = "Hjärtvariabilitet";
+"Resting Heart Rate" = "Vilopuls";
+"Body Fat" = "Kroppsfettprocent";
+"Distance walking and running" = "Gångdistans";
+"Steps" = "Steg";
+"Floors" = "Trappor";
+"Cadence" = "Kadens";
+
 /// Sheet views
 "Done" = "Klar";
 "Save" = "Spara";
@@ -18,19 +27,19 @@
 
 /// Summary view
 "Hi %@!" = "Hej %@!";
-"Insights" = "Inblickar";
-"Heart Rate Variability" = "Hjärtvariabilitet";
 
 /// Name card view
-"NAME-CARD-TITLE" = "Vad heter du?";
-"NAME-CARD-DESCRIPTION" = "Eftersom din hälsa är en personlig sak kan jag lära mig vad du heter för en privatare appupplevelse.";
-"NAME-CARD-PLACEHOLDER" = "Vad ska jag kalla dig?";
-"NAME-CARD-PRIVACY" = "Detta är valfritt och informationen du anger lämnar inte din enhet.";
+"profile.name.card.title" = "Vad heter du?";
+"profile.name.card.description" = "Jag kan lära mig vad du heter för en privatare appupplevelse.";
+"profile.name.card.placeholder" = "Vad kan jag kalla dig?";
+"profile.name.card.privacy" = "Detta är valfritt och informationen du anger lämnar inte din enhet.";
 
 /// Profile view
 "Profile" = "Profil";
-"%f years old" = "%f år";
-"No age available" = "Ålder ej tillgänglig";
+"profile.name %lld" = "%lld";
+"profile.age %lld" = "%lld år";
+"profile.noname" = "Inget namn inställt";
+"profile.noage" = "Ålder ej tillgänglig";
 "Max HR" = "Maxpuls";
 "bpm" = "bpm";
 
@@ -42,21 +51,74 @@
 "Heart Rate Zones" = "Pulszoner";
 "Include walks" = "Inkludera gångpass";
 
+/// Charts
+"chart.loading.text" = "Laddar graf";
+
 /// Workout view
 "Workouts" = "Träning";
 "No data found." = "Ingen data hittad.";
 "Make sure you've granted Buddy permission\nto read your recent workouts." = "Kolla så att du har gett Buddy tillgång till dina Träningspass i Hälsa-appen.";
 
 /// INSIGHTS
-"INSIGHT_ERROR_TEXT" = "Ingen inblick kunde genereras just nu.";
-"INSIGHT_INSIGNIFICANT_TEXT" = "Den genererade inblicken var ofullständig eller visade ej någon signifikans.";
+"Insights" = "Inblickar";
+"insight.error.text" = "Ingen inblick kunde genereras just nu.";
+"insight.insignificant.text" = "Datan var ofullständig eller visade ej någon signifikans.";
+"insight.loading.text" = "Laddar inblickar";
 
-"INSIGHT_RHR_TWOWEEKCOMPARISON_UP" = "Din genomsnittliga vilopuls var högre den senaste veckan jämfört med veckan innan. Se till att vila upp dig tillräcklig efter träningar och att ha en god kost.";
-"INSIGHT_RHR_TWOWEEKCOMPARISON_DOWN" = "Under de senaste sju dagarna sjönk din vilopuls i snitt jämfört med veckan innan. Snyggt!";
-"INSIGHT_RHR_WEEKENDWEEKCOMPARISON_UP" = "Under helgen hade du en högre vilopuls än under veckodagarna innan. En förhöjd vilopuls kan bero på stress eller alkohol och meditation kan hjälpa dig att få en lägre vilopuls.";
-"INSIGHT_RHR_WEEKENDWEEKCOMPARISON_DOWN" = "Vilopulsen var i snitt under helgen lägre än under veckodagarna. Bra jobbat!";
+"insight.rhr.twoweekcomparison.up" = "Din genomsnittliga vilopuls var högre den senaste veckan jämfört med veckan innan. Se till att vila upp dig tillräcklig efter träningar och att ha en god kost.";
+"insight.rhr.twoweekcomparison.down" = "Under de senaste sju dagarna sjönk din vilopuls i snitt jämfört med veckan innan. Snyggt!";
+"insight.rhr.weekendweekcomparison.up" = "Under helgen hade du en högre vilopuls än under veckodagarna innan. En förhöjd vilopuls kan bero på stress eller alkohol och meditation kan hjälpa dig att få en lägre vilopuls.";
+"insight.rhr.weekendweekcomparison.down" = "Vilopulsen var i snitt under helgen lägre än under veckodagarna. Bra jobbat!";
+"insight.rhr.twomonthcomparison.up" = "";
+"insight.rhr.twomonthcomparison.down" = "";
 
-"INSIGHT_HRV_WEEKENDWEEKCOMPARISON_UP" = "Under den senaste helgen var din hjärtvariabilitet i snitt högre än veckodagarna samma vecka.";
-"INSIGHT_HRV_WEEKENDWEEKCOMPARISON_DOWN" = "Se till att få tillräckligt med sömn och vila under helgen. Detta kommer hjälpa dig höja din hjärtvariabilitet som under helgen sjönk jämfört med under veckan.";
-"INSIGHT_HRV_TWOWEEKCOMPARISON_UP" = "Under de senaste sju dagarna var ditt snitt högre än veckan innan.";
-"INSIGHT_HRV_TWOWEEKCOMPARISON_DOWN" = "Var noga med att återhämta dig efter träningspass och få bra med sömn. Din hjärtvariabilitet sjönk under den senaste veckan jämfört med veckan före.";
+"insight.hrv.weekendweekcomparison.up" = "Under den senaste helgen var din hjärtvariabilitet i snitt högre än veckodagarna samma vecka.";
+"insight.hrv.weekendweekcomparison.down" = "Se till att få tillräckligt med sömn och vila under helgen. Detta kommer hjälpa dig höja din hjärtvariabilitet som under helgen sjönk jämfört med under veckan.";
+"insight.hrv.twoweekcomparison.up" = "Under de senaste sju dagarna var ditt snitt högre än veckan innan.";
+"insight.hrv.twoweekcomparison.down" = "Var noga med att återhämta dig efter träningspass och få bra med sömn. Din hjärtvariabilitet sjönk under den senaste veckan jämfört med veckan före.";
+"insight.hrv.twomonthcomparison.up" = "Jämför den senaste månaden med månaden innan så ökade din hjärtvariabilitet.";
+"insight.hrv.twomonthcomparison.down" = "Under den senaste månaden sjönk din hjärtvariabilitet jämfört med månaden tidigare.";
+
+"insight.bodyfat.twoweekcomparison.up" = "Jämfört med förra veckan ökade din kroppsfettprocent den senaste veckan. Se till att äta bra, träna och få tillräckligt med vardagsmotion.";
+"insight.bodyfat.twoweekcomparison.down" = "Under de senaste sju dagarna sjönk din kroppsfettprocent anmärkningsvärt.";
+"insight.bodyfat.twomonthcomparison.up" = "Jämför vi den senaste månaden med månaden innan ökade din procent kroppsfett.";
+"insight.bodyfat.twomonthcomparison.down" = "Under den senaste månaden sjönk din kroppsfettprocent jämfört med månaden dessförinnan.";
+
+"insight.distance.twoweekcomparison.up" = "Du har gått och sprungit längre de senaste sju dagarna än samma tidigare period.";
+"insight.distance.twoweekcomparison.down" = "Du har avklarat lägre gång och löpstrecka den senaste veckan jämfört med veckan före. Försök ta några promenadpauser under dagen för att röra dig mer.";
+"insight.distance.twomonthcomparison.up" = "Den senaste månaden ökade din avklarade snittdistans jämfört med månaden innan det.";
+"insight.distance.twomonthcomparison.down" = "Under den senaste månaden sjönk din distans i snitt jämfört med månaden tidigare.";
+"insight.distance.weekdaycomparison.up" = "";
+"insight.distance.weekdaycomparison.down" = "";
+"insight.distance.weekendweekcomparison.up" = "";
+"insight.distance.weekendweekcomparison.down" = "";
+"insight.distance.topdayofweek.up" = "";
+"insight.distance.topdayofweek.down" = "";
+"insight.distance.achievedtodayvsyesterday.up" = "Du har rört dig längre hittills idag än vad du gjorde under hela dagen igår!";
+"insight.distance.achievedtodayvsyesterday.down" = "Hittills har du gått och sprungit kortare idag än vad du gjort under hela dagen igår.";
+
+"insight.steps.twoweekcomparison.up" = "Du tog fler steg under de senaste sju dagarna jämfört med sju dagar innan det. Starkt!";
+"insight.steps.twoweekcomparison.down" = "Step it up! Du tog färre steg den senaste veckan jämfört med veckan innan.";
+"insight.steps.twomonthcomparison.up" = "Den senaste månaden ökade antalet steg du tog jämfört med månaden innan det.";
+"insight.steps.twomonthcomparison.down" = "Under den senaste månaden sjönk ditt antal steg betydligt jämfört med månaden tidigare. Försök ta pauser under dagen med en liten promenad.";
+"insight.steps.weekdaycomparison.up" = "";
+"insight.steps.weekdaycomparison.down" = "";
+"insight.steps.weekendweekcomparison.up" = "";
+"insight.steps.weekendweekcomparison.down" = "";
+"insight.steps.topdayofweek.up" = "";
+"insight.steps.topdayofweek.down" = "";
+"insight.steps.achievedtodayvsyesterday.up" = "Du har tagit fler steg idag än vad du gjorde under hela gårdagen.";
+"insight.steps.achievedtodayvsyesterday.down" = "";
+
+"insight.stairs.twoweekcomparison.up" = "Du flyger nästan med tanke på antalen trappor du gick uppför de senaste sju dagarna. Det är fler än veckan innan.";
+"insight.stairs.twoweekcomparison.down" = "Du gick i snitt i färre trappor den senaste veckan jämfört med veckan innan. Välj alltid trappan före rulltrappan för lite extra vardagsmotion!";
+"insight.stairs.twomonthcomparison.up" = "Du har verkligen ökat antalet trappor du har gått i den senaste månaden, väldigt bra jobbat! Din kropp tackar dig.";
+"insight.stairs.twomonthcomparison.down" = "Försök ta trapporna oftare. Den senaste månaden har du gått i betydligt färre trappor än tidigare.";
+"insight.stairs.weekdaycomparison.up" = "";
+"insight.stairs.weekdaycomparison.down" = "";
+"insight.stairs.weekendweekcomparison.up" = "";
+"insight.stairs.weekendweekcomparison.down" = "";
+"insight.stairs.topdayofweek.up" = "";
+"insight.stairs.topdayofweek.down" = "";
+"insight.stairs.achievedtodayvsyesterday.up" = "Antalet trappor du har gått i idag är fler än under hela gårdagen.";
+"insight.stairs.achievedtodayvsyesterday.down" = "";
