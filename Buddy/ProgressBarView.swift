@@ -10,8 +10,7 @@ import SwiftUI
 struct ProgressBarView: View {
 	var progress: Double
 	
-	static let hue: Double = 0.92
-	private let backgroundColor: Color = .secondary
+	private let backgroundColor: Color = .secondary.opacity(0.3)
 	private let foregroundColor: Color = .accentColor
 	
 	init(progress: Double) {
@@ -45,10 +44,10 @@ struct ProgressBarView: View {
 				Capsule()
 					.frame(width: CGFloat(self.progress) * geometry.size.width)
 					.foregroundColor(self.foregroundColor)
-					.animation(.easeIn)
 			}
 		}
 		.frame(height: 10)
+		.clipShape(Capsule())
 	}
 }
 
