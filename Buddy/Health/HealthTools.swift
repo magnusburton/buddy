@@ -9,11 +9,14 @@ import Foundation
 import HealthKit
 
 struct HealthTools {
+	static fileprivate let healthStore = HKHealthStore()
+	
+	// MARK: - Max HR
 	enum MaxHRAlgorithm: Int {
-		case nes = 0, tanaka, oakland, haskell, robergs, wohlfart
+		case nes = 0, tanaka, oakland, haskell, robergs, wohlfart, average
 	}
 	
-	static func getMaxHR(from age: Int, using formula: MaxHRAlgorithm, gender: HKBiologicalSex? = .notSet) -> Double {
+	static func getMaxHR(from age: Int, using formula: MaxHRAlgorithm, gender: HKBiologicalSex? = .notSet, date: Date) async -> Double {
 		let age = Double(age)
 		
 		switch formula {
@@ -34,13 +37,19 @@ struct HealthTools {
 					case .male:
 						return 203.7 / (1 + exp(0.033 * (age - 104.3)))
 					default:
-						return 220
+						return await getMaxHR(from: Int(age), using: .haskell, gender: gender, date: date)
 				}
-			default:
-				return 220
+			case .average:
+				do {
+					let maxHR = try await calculateMaxHR(from: date)
+					return maxHR.doubleValue(for: .count().unitDivided(by: .minute()))
+				} catch {
+					return await getMaxHR(from: Int(age), using: .haskell, gender: gender, date: date)
+				}
 		}
 	}
 	
+	// MARK: - Fitness level
 	// https://www.verywellfit.com/resting-heart-rate-3432632
 	
 	enum FitnessLevels {
@@ -53,7 +62,7 @@ struct HealthTools {
 	}
 	
 	static func getFitnessLevel(age: Int, gender: HKBiologicalSex, rhr: Int) -> FitnessLevels {
-		var rhrLimits: Array<Int>
+		var rhrLimits: [Int]
 		
 		if gender == .male {
 			switch age {
@@ -106,15 +115,11 @@ struct HealthTools {
 		}
 	}
 	
+	// MARK: - Heart rate zone
 	// https://www.runnersworld.com/beginner/a20812270/should-i-do-heart-rate-training/
 	
-	enum HeartRateZones {
-		case undetermined
-		case endurance
-		case moderate
-		case tempo
-		case threshold
-		case anaerobic
+	enum HeartRateZones: Int {
+		case undetermined = 0, endurance, moderate, tempo, threshold, anaerobic
 	}
 	
 	static func getHeartRateZone(maxHR: Double, heartRate: Double) -> HeartRateZones {
@@ -133,8 +138,7 @@ struct HealthTools {
 		return HeartRateZones.undetermined
 	}
 	
-	// Distance splits
-	
+	// MARK: - Distance splits
 	struct WorkoutDistanceSplit: Identifiable {
 		var id = UUID()
 		var sample: HKQuantity
@@ -144,7 +148,7 @@ struct HealthTools {
 		var slowest: Bool = false
 	}
 	
-	static func getSplits(samples: [HKQuantitySample], unit: HKUnit = HKUnit.meterUnit(with: .kilo)) -> [WorkoutDistanceSplit] {
+	static func getSplits(samples: [HealthSample], unit: HKUnit = HKUnit.meterUnit(with: .kilo)) -> [WorkoutDistanceSplit] {
 		var splits: [TimeInterval] = []
 		var distance: [HKQuantity] = []
 		let limitDistance: Double = 1
@@ -217,5 +221,111 @@ struct HealthTools {
 		}
 		
 		return formattedSplits
+	}
+	
+	// MARK: - Workout exertion
+	static func getWorkoutExertion(samples: [HKQuantitySample], maxHR: Double, restingHR: Double) -> Double {
+		let unit = HKUnit.count().unitDivided(by: .minute())
+		var totalSampleDuration: TimeInterval = 0
+		var weightedValues: Double = 0
+		
+		for sample in samples {
+			guard sample.quantityType == .quantityType(forIdentifier: .heartRate) else {
+				fatalError("*** Invalid quantity type for workout exertion calculations.")
+			}
+			
+			let value = sample.quantity.doubleValue(for: unit)
+			let duration = sample.duration
+			
+			if value >= maxHR {
+				weightedValues += 10*duration
+			} else if value > restingHR {
+				let normalized = (value-restingHR)/(maxHR-restingHR)
+				weightedValues += normalized*duration
+			}
+			totalSampleDuration += duration
+		}
+		
+		let exertion = weightedValues/totalSampleDuration * 10
+		
+		if exertion == .signalingNaN || exertion == .nan || exertion < 0 || exertion > 10 {
+			return 0
+		}
+		
+		return exertion
+	}
+}
+
+// MARK: - Heart rate extension
+
+extension HealthTools {
+	static func calculateMaxHR(from date: Date, days: Int = 60) async throws -> HKQuantity {
+		let endDate = date
+		guard let startDate = Calendar.current.date(byAdding: .day, value: -days, to: endDate) else {
+			throw HealthKitError.invalidDate
+		}
+		
+		let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+		
+		guard let quantityType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
+			throw HealthKitError.unknown
+		}
+		
+		// Create the query
+		return try await withCheckedThrowingContinuation { continuation in
+			let query = HKStatisticsQuery(
+				quantityType: quantityType,
+				quantitySamplePredicate: predicate,
+				options: [.discreteMax]) { (_, statistics, error) in
+					
+					if let error = error {
+						continuation.resume(throwing: error)
+                        return
+					}
+					
+					guard let max = statistics?.maximumQuantity() else {
+						continuation.resume(throwing: HealthKitError.unknown)
+						return
+					}
+					
+					continuation.resume(returning: max)
+				}
+			healthStore.execute(query)
+		}
+	}
+	
+	static func calculateRestingHR(from date: Date, days: Int = 60) async throws -> HKQuantity {
+		let endDate = date
+		guard let startDate = Calendar.current.date(byAdding: .day, value: -days, to: endDate) else {
+			throw HealthKitError.invalidDate
+		}
+		
+		let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+		
+		guard let quantityType = HKObjectType.quantityType(forIdentifier: .restingHeartRate) else {
+			throw HealthKitError.unknown
+		}
+		
+		// Create the query
+		return try await withCheckedThrowingContinuation { continuation in
+			let query = HKStatisticsQuery(
+				quantityType: quantityType,
+				quantitySamplePredicate: predicate,
+				options: [.discreteAverage]) { (_, statistics, error) in
+					
+					if let error = error {
+						continuation.resume(throwing: error)
+                        return
+					}
+					
+					guard let avg = statistics?.averageQuantity() else {
+						continuation.resume(throwing: HealthKitError.noData)
+						return
+					}
+					
+					continuation.resume(returning: avg)
+				}
+			healthStore.execute(query)
+		}
 	}
 }
