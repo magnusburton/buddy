@@ -86,12 +86,19 @@ struct OnboardingView: View {
 					
 					Button(action: {
 						if selected == 3 {
-							HKManager.authorizeHealthKit() { result, error in
-								healthManager.initStore()
-								workoutManager.initStore()
-								DispatchQueue.main.async {
-									isPresented = false
-									userData.firstLaunch = false
+							Task {
+								let result = await HKManager.authorizeHealthKit()
+								
+								if result {
+									healthManager.initStore()
+									workoutManager.initStore()
+									
+									await MainActor.run {
+										isPresented = false
+										userData.firstLaunch = false
+									}
+								} else {
+									debugPrint("Did not authorize HK!")
 								}
 							}
 						} else {
