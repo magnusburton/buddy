@@ -35,6 +35,11 @@ struct MaxHeartRateAlgorithmView: View {
 					})
 			}
 			
+			AlgorithmRowView(author: "60-days max", formula: .average, formulaString: "Your max HR for the past 60 days", selected: selectedFormula == .average, onTap: {
+				selectedFormula = .average
+				userData.maxHRAlgorithm = .average
+			})
+			
 			AlgorithmRowView(author: "Nes, et al. (2013)", formula: .nes, formulaString: "211 - (0.64 × age)", selected: selectedFormula == .nes, onTap: {
 				selectedFormula = .nes
 				userData.maxHRAlgorithm = .nes
@@ -84,12 +89,15 @@ struct AlgorithmRowView: View {
 	var selected: Bool
 	var onTap: () -> Void
 	
+	@State private var maxHR: Double?
+	
 	var body: some View {
 		Section(header: Text(author), footer: Group {
-			if let age = healthKitManager.dateOfBirth?.age {
-				Text("This formula results in a max HR of \(HealthTools.getMaxHR(from: age, using: formula, gender: healthKitManager.biologicalSex), specifier: "%.1f") bpm.")
-					.bold()
+			if let maxHR = maxHR {
+				Text("This formula results in a max HR of \(maxHR.formatted(.number.precision(.fractionLength(1)))) bpm.")
+				.bold()
 			}
+			
 		}) {
 			if selected {
 				HStack {
@@ -104,15 +112,20 @@ struct AlgorithmRowView: View {
 				HStack {
 					Text(formulaString)
 					Spacer()
-					Image(systemName: "circle")
+					Image(systemName: "circle.dotted")
 				}
 			}
 		}
 		.contentShape(Rectangle())
 		.onTapGesture {
 			onTap()
-			let feedback = UISelectionFeedbackGenerator()
-			feedback.selectionChanged()
+			let feedback = UIImpactFeedbackGenerator()
+			feedback.impactOccurred()
+		}
+		.task {
+			if let age = healthKitManager.dateOfBirth?.age {
+				maxHR = await HealthTools.getMaxHR(from: age, using: formula, gender: healthKitManager.biologicalSex, date: .now)
+			}
 		}
 	}
 }
