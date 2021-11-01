@@ -43,14 +43,15 @@ extension Collection where Element == HealthSample {
 	/// Returns the average of all elements in the array
 	func average(unit: HKUnit) -> Double { isEmpty ? .zero : sum(unit: unit) / Double(count) }
 	/// Returns the average of all elements in the sequence grouped by an interval
-	func average(by interval: Set<Calendar.Component>, unit: HKUnit) -> [HealthSample] {
+	func average(by interval: Calendar.ComponentInterval, unit: HKUnit) -> [HealthSample] {
 		let items = self
 		let calendar = Calendar.current
+		let components = calendar.getCalendarSet(from: interval)
 		
 		var average: [HealthSample] = []
 		
 		let grouped = Dictionary(grouping: items) {
-			return calendar.dateComponents(interval, from: $0.startDate)
+			return calendar.dateComponents(components, from: $0.startDate)
 		}
 		
 		for (_, samples) in grouped {
@@ -71,14 +72,15 @@ extension Collection where Element == HealthSample {
 		return average
 	}
 	/// Returns the sum of all elements in the sequence grouped by an interval
-	func sum(by interval: Set<Calendar.Component>, unit: HKUnit) -> [HealthSample] {
+	func sum(by interval: Calendar.ComponentInterval, unit: HKUnit) -> [HealthSample] {
 		let items = self
 		let calendar = Calendar.current
+		let components = calendar.getCalendarSet(from: interval)
 		
 		var sum: [HealthSample] = []
 		
 		let grouped = Dictionary(grouping: items) {
-			return calendar.dateComponents(interval, from: $0.startDate)
+			return calendar.dateComponents(components, from: $0.startDate)
 		}
 		
 		for (_, samples) in grouped {
@@ -101,7 +103,7 @@ extension Collection where Element == HealthSample {
 	
 	func points(unit: HKUnit) -> [Point] {
 		map {
-			if let sample = $0.quantitySample {
+            if let sample = $0.quantitySample, sample.count == 1 {
 				return Point(sample: sample, unit: unit)
 			} else {
 				return Point(quantity: $0.quantity, date: $0.endDate, unit: unit)

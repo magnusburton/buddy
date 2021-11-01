@@ -23,8 +23,8 @@ extension HealthKitManager {
 			let data = try healthStore.biologicalSex().biologicalSex
 			return data
 		} catch let error {
-			print("Reading characteristic biological sex data: \(error)")
+			debugPrint("Reading characteristic biological sex data: \(error.localizedDescription)")
+			return nil
 		}
-		return nil
 	}
 }

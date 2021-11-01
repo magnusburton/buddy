@@ -23,6 +23,32 @@ extension Calendar {
 	func endOfMonth(for date: Date) -> Date {
 		return self.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth(for: date))!
 	}
+	
+	public enum ComponentInterval {
+		case minute
+		case hour
+		case day
+		case week
+		case month
+		case year
+	}
+	
+	public func getCalendarSet(from interval: ComponentInterval) -> Set<Calendar.Component> {
+		switch interval {
+			case .minute:
+				return [.year, .month, .day, .hour, .minute]
+			case .hour:
+				return [.year, .month, .day, .hour]
+			case .day:
+				return [.year, .month, .day]
+			case .week:
+				return [.year, .weekOfYear]
+			case .month:
+				return [.year, .month]
+			case .year:
+				return [.year]
+		}
+	}
 }
 
 extension Date {
@@ -48,5 +74,9 @@ extension Date {
 	
 	var endOfMonth: Date {
 		return Calendar.current.endOfMonth(for: self)
+	}
+	
+	static func - (lhs: Date, rhs: Date) -> TimeInterval {
+		return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
 	}
 }

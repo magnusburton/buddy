@@ -11,12 +11,12 @@ import HealthKit
 extension HealthManager.HealthData {
 	/// Returns the total sum of all elements in the sequence
 	var sum: Double {
-		return self.items.sum(unit: self.unit)
+		return self.items.sum(unit: self.unit) * self.multiplier
 	}
 	
 	/// Returns the average of all elements in the sequence
 	var average: Double {
-		return self.items.average(unit: self.unit)
+		return self.items.average(unit: self.unit) * self.multiplier
 	}
 	
 	/// Returns the standard deviation of all elements in the sequence
@@ -31,7 +31,7 @@ extension HealthManager.HealthData {
 	/// Returns the average of all elements in the sequence grouped by an interval
 	func average(by interval: Set<Calendar.Component>) -> [HKQuantitySample] {
 		guard let sampleType = HKSampleType.quantityType(forIdentifier: self.identifier) else {
-			fatalError("*** Couldn't generate sampleType from \(self.identifier) ***")
+			fatalError("*** Couldn't generate sampleType from \(self.identifier)")
 		}
 		return self.items.average(by: interval, type: sampleType, unit: self.unit)
 	}
