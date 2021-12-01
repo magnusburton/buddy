@@ -28,12 +28,13 @@ struct ComparisonBarChart: View {
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading, spacing: Constants.spacing) {
 					HStack(alignment: .lastTextBaseline, spacing: Constants.spacing) {
-						Text("\(previousValue, specifier: "%.0f")")
+						Text(previousValue.formatted(.number.precision(.significantDigits(0))))
 							.font(.title2.bold())
 						Text(unit)
 							.font(.footnote.bold())
 							.foregroundColor(.secondary)
 					}
+					
 					HStack(spacing: 5) {
 						RoundedRectangle(cornerRadius: 10)
 							.foregroundColor(.secondary)
@@ -42,7 +43,7 @@ struct ComparisonBarChart: View {
 								if previousValue / maxValue >= textWarpThreshold {
 									Text(previousLabel)
 										.font(.footnote.bold())
-										.foregroundColor(.systemBackground)
+										.foregroundColor(.white)
 										.scaledToFit()
 										.minimumScaleFactor(0.5)
 									Spacer()
@@ -59,12 +60,13 @@ struct ComparisonBarChart: View {
 				
 				VStack(alignment: .leading, spacing: Constants.spacing) {
 					HStack(alignment: .lastTextBaseline, spacing: Constants.spacing) {
-						Text("\(currentValue, specifier: "%.0f")")
+						Text(currentValue.formatted(.number.precision(.significantDigits(0))))
 							.font(.title2.bold())
 						Text(unit)
 							.font(.footnote.bold())
 							.foregroundColor(.secondary)
 					}
+					
 					HStack(spacing: 5) {
 						RoundedRectangle(cornerRadius: 10)
 							.foregroundColor(.accentColor)
@@ -93,12 +95,20 @@ struct ComparisonBarChart: View {
 
 struct ComparisonBarChart_Previews: PreviewProvider {
     static var previews: some View {
-		ViewPreview(ComparisonBarChart(
-			previousLabel: "Yesterday",
-			previousValue: 2478,
-			currentLabel: "Today",
-			currentValue: 7492,
-			unit: "steps"))
-			.frame(width: 250, height: 175)
+		Group {
+			ViewPreview(ComparisonBarChart(
+				previousLabel: "Yesterday",
+				previousValue: 2478,
+				currentLabel: "Today",
+				currentValue: 7492,
+				unit: "steps"))
+			ViewPreview(ComparisonBarChart(
+				previousLabel: "Yesterday",
+				previousValue: 4292.5,
+				currentLabel: "Today",
+				currentValue: 7492,
+				unit: "steps"))
+		}
+		.frame(width: 300, height: 175)
     }
 }
