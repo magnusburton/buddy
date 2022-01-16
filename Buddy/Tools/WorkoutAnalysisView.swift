@@ -22,12 +22,12 @@ import CareKitUI
 //}
 
 struct WorkoutAnalysisView: View {
-	var completed: Int
-	var total: Int
+	var completed: Double
+	var total: Double
 	
 	init(_ completed: Int, of total: Int) {
-		self.completed = completed
-		self.total = total
+		self.completed = Double(completed)
+		self.total = Double(total)
 	}
 	
 	var body: some View {
@@ -40,9 +40,12 @@ struct WorkoutAnalysisView: View {
 					.fontWeight(.medium)
 					.lineLimit(nil)
 				
-				ProgressBarView(Double(completed), of: Double(total))
+				ProgressView(
+					value: completed,
+					total: total)
+//				ProgressBarView(Double(completed), of: Double(total))
 				
-				Text("\(completed) of \(total) workouts analyzed.")
+				Text("\(completed.formatted(.number.precision(.fractionLength(0)))) of \(total.formatted(.number.precision(.fractionLength(0)))) workouts analyzed.")
 					.font(.caption)
 					.fontWeight(.medium)
 					.foregroundColor(.secondary)

@@ -30,18 +30,35 @@ struct HealthSample {
 	}
 }
 
+extension HealthSample: Identifiable {
+	var id: UUID {
+		if let sample = quantitySample {
+			return sample.uuid
+		} else {
+			return UUID()
+		}
+	}
+	
+	func asPoint(with unit: HKUnit) -> Point {
+		Point(quantity: quantity, date: startDate, unit: unit)
+	}
+}
+
 extension Collection where Element == HealthSample {
 	/// Returns an array with the cumulative sum of all elements in the array
-	func cumSum(unit: HKUnit) -> [HealthSample] {
+	func cumulativeSum(unit: HKUnit) -> [HealthSample] {
 		reduce(into: []) {
 			let value = ($0.last?.quantity.doubleValue(for: unit) ?? ($0.reserveCapacity(self.count), 0).1) + $1.quantity.doubleValue(for: unit)
 			return $0.append(HealthSample(quantity: HKQuantity(unit: unit, doubleValue: value), interval: $1.interval))
 		}
 	}
+    
 	/// Returns the sum of all elements in the array
 	func sum(unit: HKUnit) -> Double { reduce(.zero) { $0 + $1.quantity.doubleValue(for: unit) } }
+	
 	/// Returns the average of all elements in the array
 	func average(unit: HKUnit) -> Double { isEmpty ? .zero : sum(unit: unit) / Double(count) }
+    
 	/// Returns the average of all elements in the sequence grouped by an interval
 	func average(by interval: Calendar.ComponentInterval, unit: HKUnit) -> [HealthSample] {
 		let items = self
@@ -71,6 +88,7 @@ extension Collection where Element == HealthSample {
 		
 		return average
 	}
+    
 	/// Returns the sum of all elements in the sequence grouped by an interval
 	func sum(by interval: Calendar.ComponentInterval, unit: HKUnit) -> [HealthSample] {
 		let items = self
@@ -121,4 +139,14 @@ extension Collection where Element == HealthSample {
 		}
 		return nil
 	}
+    
+    /// Returns an array with all elements as a `HKQuantitySample`.
+    var asQuantitySamples: [HKQuantitySample] {
+        compactMap { sample in
+            if let quantitySample = sample.quantitySample {
+                return quantitySample
+            }
+            return nil
+        }
+    }
 }
