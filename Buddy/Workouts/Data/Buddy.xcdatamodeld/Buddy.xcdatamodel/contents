@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="HeartRateZone" representedClassName=".HeartRateZone" syncable="YES">
+        <attribute name="algorithmValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="heartZone" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sampleCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="version" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="zones" inverseEntity="Workout"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="InsightData" representedClassName="InsightData" syncable="YES" codeGenerationType="class"/>
+    <entity name="Workout" representedClassName=".Workout" syncable="YES">
+        <attribute name="activityTypeValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="endDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="insertedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="processed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="totalDistance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="totalEnergyBurned" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="bests" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WorkoutBest" inverseName="workout" inverseEntity="WorkoutBest"/>
+        <relationship name="exertion" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WorkoutExertion" inverseName="workout" inverseEntity="WorkoutExertion"/>
+        <relationship name="zones" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HeartRateZone" inverseName="workout" inverseEntity="HeartRateZone"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WorkoutBest" representedClassName=".WorkoutBest" syncable="YES">
+        <attribute name="distanceId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="duration" attributeType="Double" minValueString="0" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="version" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="bests" inverseEntity="Workout"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WorkoutExertion" representedClassName=".WorkoutExertion" syncable="YES">
+        <attribute name="algorithmValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="exertion" attributeType="Double" minValueString="0" maxValueString="10" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="version" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="exertion" inverseEntity="Workout"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="HeartRateZone" positionX="-213.8690185546875" positionY="157.6227416992188" width="128" height="119"/>
+        <element name="InsightData" positionX="-414" positionY="162" width="128" height="29"/>
+        <element name="Workout" positionX="-404.4683227539062" positionY="75.30888366699219" width="128" height="194"/>
+        <element name="WorkoutBest" positionX="-618.4793701171875" positionY="137.2946929931641" width="128" height="119"/>
+        <element name="WorkoutExertion" positionX="-414" positionY="162" width="128" height="104"/>
+    </elements>
+</model>
