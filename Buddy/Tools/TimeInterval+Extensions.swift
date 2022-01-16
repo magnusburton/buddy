@@ -17,12 +17,3 @@ extension TimeInterval {
 		return formatter.string(from: self)
 	}
 }
-
-extension DateInterval {
-	func format(template: String) -> String {
-		let formatter = DateIntervalFormatter()
-		formatter.dateTemplate = template
-		
-		return formatter.string(from: self.start, to: self.end)
-	}
-}
