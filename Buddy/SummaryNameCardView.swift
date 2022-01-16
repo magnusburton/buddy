@@ -31,21 +31,37 @@ struct SummaryNameCardView: View {
     var body: some View {
 		CardView {
 			VStack(alignment: .leading, spacing: Constants.spacing) {
-				Text("NAME-CARD-TITLE")
+				Text("profile.name.card.title")
 					.font(.headline)
-					.fontWeight(.bold)
-				Text("NAME-CARD-DESCRIPTION")
+					.bold()
+				Text("profile.name.card.description")
 					.font(.caption)
 					.fontWeight(.medium)
 					.multilineTextAlignment(.leading)
 				
-				TextField("NAME-CARD-PLACEHOLDER", text: $firstName ?? "")
+				// Fix done button
+				TextField("profile.name.card.placeholder", text: $firstName ?? "")
 					.textContentType(.givenName)
 					.textFieldStyle(SummaryTextFieldStyle())
 					.padding([.vertical])
+					.submitLabel(.done)
+					.onSubmit {
+						if let firstName = firstName?.trimmingCharacters(in: .whitespacesAndNewlines), firstName.count > 0 {
+							userData.firstName = firstName
+							
+							withAnimation {
+								userData.showFirstNameCard = false
+							}
+						}
+						
+						hideKeyboard()
+					}
 				
 				Button(action: {
-					userData.firstName = firstName?.trimmingCharacters(in: .whitespacesAndNewlines)
+					if let firstName = firstName?.trimmingCharacters(in: .whitespacesAndNewlines), firstName.count > 0 {
+						userData.firstName = firstName
+					}
+					
 					withAnimation {
 						userData.showFirstNameCard = false
 					}
@@ -85,10 +101,11 @@ struct SummaryNameCardView: View {
 				.background(Color.white)
 				.overlay(RoundedRectangle(cornerRadius: Constants.cornerRadius).strokeBorder(Color.secondary, style: StrokeStyle(lineWidth: 1.0)))
 				.cornerRadius(Constants.cornerRadius)
-				.padding([.top], 2)
+				.padding([.top, .bottom], 2)
 				
-				Text("NAME-CARD-PRIVACY")
+				Text("profile.name.card.privacy")
 					.font(.caption2)
+					.foregroundColor(.secondary)
 					.multilineTextAlignment(.leading)
 			}.padding()
 		}
@@ -98,6 +115,6 @@ struct SummaryNameCardView: View {
 struct SummaryNameCardView_Previews: PreviewProvider {
     static var previews: some View {
         ViewPreview(SummaryNameCardView())
-			.environmentObject(UserData())
+			.environmentObject(UserData.shared)
     }
 }
