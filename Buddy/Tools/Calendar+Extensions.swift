@@ -16,6 +16,14 @@ extension Calendar {
 		return Calendar.current.date(byAdding: components, to: start)!
 	}
 	
+	func startOfWeek(for date: Date) -> Date {
+		return self.date(from: self.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date))!
+	}
+	
+	func endOfWeek(for date: Date) -> Date {
+		return self.date(byAdding: DateComponents(day: -1, weekOfYear: 1), to: self.startOfWeek(for: date))!
+	}
+	
 	func startOfMonth(for date: Date) -> Date {
 		return self.date(from: self.dateComponents([.year, .month], from: date))!
 	}
@@ -66,6 +74,14 @@ extension Date {
 	
 	var tomorrow: Date? {
 		return Calendar.current.date(byAdding: .day, value: +1, to: self)
+	}
+	
+	var startOfWeek: Date {
+		return Calendar.current.startOfWeek(for: self)
+	}
+	
+	var endOfWeek: Date {
+		return Calendar.current.endOfWeek(for: self)
 	}
 	
 	var startOfMonth: Date {
